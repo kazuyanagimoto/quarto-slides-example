@@ -1,0 +1,12 @@
+version: '3'
+services:
+    rstudio:
+        build:
+            context: .
+        environment:
+            - TZ=Europe/Madrid
+            - DISABLE_AUTH=true
+            - RENV_PATHS_CACHE=/home/rstudio/.renv/cache
+        volumes:
+            - .:/home/rstudio/work
+            - $HOME/.renv:/home/rstudio/.renv/cache
