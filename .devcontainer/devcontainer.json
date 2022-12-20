@@ -8,7 +8,7 @@
         "quarto.quarto"
 	],
 	"forwardPorts": [8787],
-    "workspaceFolder": "/home/rstudio/work",
+    "workspaceFolder": "/home/rstudio/quarto-slides-example",
     "shutdownAction": "stopCompose",
     "settings": {
     }

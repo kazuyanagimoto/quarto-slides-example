@@ -37,3 +37,10 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# Quarto html
+*_files/
+
+# VSCODE
+.vscode/
+/.quarto/
