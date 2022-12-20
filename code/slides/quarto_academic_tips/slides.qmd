@@ -281,7 +281,7 @@ p
 <br>
 
 ```{r}
-diff_median <- sum_beta[sum_beta$name == "median",]$par_2_2 - sum_beta[sum_beta$name == "median",]$par_2_5
+diff_median <- sum_beta$par_2_2[sum_beta$name == "median"] - sum_beta$par_2_5[sum_beta$name == "median"]
 ```
 
 ::: {.message}
