@@ -8,5 +8,5 @@ services:
             - DISABLE_AUTH=true
             - RENV_PATHS_CACHE=/home/rstudio/.renv/cache
         volumes:
-            - .:/home/rstudio/work
+            - .:/home/rstudio/quarto-slides-example
             - $HOME/.renv:/home/rstudio/.renv/cache

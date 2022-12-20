@@ -1,0 +1,289 @@
+---
+execute:
+    echo: false
+    warning: false
+    message: false
+    cache: false
+format:
+  revealjs:
+    standalone: true
+    embed-resources: true
+    width: 1600
+    height: 900
+    theme: [default, custom.scss]
+    slide-number: true
+    fig-cap-location: top
+    fig-format: svg
+    pdf-separate-fragments: false
+---
+
+## {background-image="https://source.unsplash.com/F2KRf_QfCqw" visibility="uncounted"}
+
+::: {.title}
+Quarto Tips for Academic Presentation
+:::
+
+::: {.author}
+Kazuharu Yanagimoto
+:::
+
+::: {.date}
+`r format(Sys.time(), "%B %d, %Y")`
+:::
+
+
+```{r}
+library(here)
+library(tidyverse)
+library(gghighlight)
+library(gt)
+library(gtExtras)
+```
+
+
+```{r}
+font_title <- "Josefin Sans"
+font_text <- "Montserrat"
+font_accent <- "Fira Sans"
+
+color_base <- "#1C5253"
+color_text <- "#272822"
+color_bg <- "#FFFFFF"
+color_accent <- "#EB811B"
+
+color_base_light <- xaringanthemer::lighten_color(color_base, strength = 0.33)
+color_accent_light <- xaringanthemer::lighten_color(color_accent, strength = 0.33)
+grey <- scales::alpha("grey", 0.7)
+```
+
+
+```{r}
+blend_colors <- function(x, y, alpha = 0.5) {
+  x <- colorspace::hex2RGB(x)
+  y <- colorspace::hex2RGB(y)
+  z <- colorspace::mixcolor(alpha, x, y)
+  colorspace::hex(z)
+}
+color_blender <- function(x, y) function(alpha = 0.5) blend_colors(x, y, alpha)
+
+theme_quarto <- function (
+    text_color = color_text,
+    background_color = color_bg,
+    text_font = font_text,
+    text_font_size = 30,
+    accent_color = color_base,
+    title_font = font_title,
+    title_font_size = 30
+){
+    blend <- color_blender(text_color, background_color)
+    ggplot2::theme(
+        line = ggplot2::element_line(color = blend(0.2)),
+        rect = ggplot2::element_rect(fill = background_color),
+        title = ggplot2::element_text(
+            color = accent_color,
+            family = title_font,
+            size = title_font_size
+        ),
+        plot.background = ggplot2::element_rect(
+            fill = background_color,
+            color = background_color
+        ),
+        panel.background = ggplot2::element_rect(
+            fill = background_color,
+            color = background_color
+        ),
+        panel.grid.major = ggplot2::element_line(
+            color = blend(0.8),
+            inherit.blank = TRUE
+        ),
+        panel.grid.minor = ggplot2::element_line(
+            color = blend(0.9),
+            inherit.blank = TRUE
+        ),
+        axis.title = ggplot2::element_text(size = title_font_size * 0.8),
+        axis.ticks = ggplot2::element_line(color = blend(0.8)),
+        axis.text = ggplot2::element_text(color = blend(0.4), size = title_font_size * 0.7),
+        legend.key = ggplot2::element_rect(fill = "transparent", colour = NA),
+        legend.text = ggplot2::element_text(size = title_font_size * 0.8, family = title_font),
+        plot.caption = ggplot2::element_text(
+            size = text_font_size * 0.8,
+            color = blend(0.3)
+        )
+    )
+}
+```
+
+# Figures {background-color="#1C5253" visibility="uncounted"}
+
+## `theme_quarto()`
+
+
+```{r}
+load(here("output/quarto_academic_tips/sum_penguins.rds"))
+
+p <- sum_penguins |>
+  ggplot(aes(bill_length_mm, fct_reorder(species, bill_length_mm))) +
+  geom_col(fill = color_base) +
+  labs(x = "Bill Length (mm)", y = NULL) +
+  theme_quarto() +
+  theme(panel.grid = element_blank())
+
+p
+```
+
+## `theme_quarto()` + `gghighlight()`
+
+```{r}
+p +
+  gghighlight(FALSE)
+```
+
+
+## `theme_quarto()` + `gghighlight()` {visibility="uncounted"}
+
+```{r}
+p +
+  gghighlight(species == "Chinstrap")
+```
+
+## `theme_quarto()` + `gghighlight()` + And More!
+
+
+```{r}
+sum_penguins |>
+  mutate(lbl = str_c(round(bill_length_mm), "mm")) |>
+  ggplot(aes(bill_length_mm, fct_reorder(species, bill_length_mm))) +
+  geom_col(fill = color_base) +
+  geom_text(aes(label = lbl),
+            hjust = 0, nudge_x = .5,
+            size = 7, fontface = "bold", family = font_accent) +
+  scale_x_continuous(expand = expansion(mult = c(0, .12))) +
+  labs(x = NULL, y = NULL) +
+  theme_quarto() +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks = element_blank()) +
+  gghighlight(species == "Chinstrap")
+```
+
+# Tables {background-color="#1C5253" visibility="uncounted"}
+
+## `gt`
+
+```{r}
+load(here("output/quarto_academic_tips/bill_length_sex.rds"))
+
+bill_length_sex |>
+  mutate(ratio = bill_length_female / bill_length_male) |>
+  gt(rowname_col = "species") |>
+  cols_label(bill_length_female = "Female", bill_length_male = "Male", ratio = "Pct.") |>
+  fmt_number(columns = starts_with("bill_length"), decimals = 1) |>
+  fmt_percent(ratio, decimals = 0)
+```
+
+
+## `gt` + `gtExtras`
+
+```{r}
+gtb <- bill_length_sex |>
+  mutate(ratio = bill_length_female / bill_length_male,
+         ratio_bar = ratio * 100) |>
+  gt(rowname_col = "species") |>
+  cols_label(bill_length_female = "Female", bill_length_male = "Male", ratio_bar = "Female/Male", ratio = "Pct.") |>
+  fmt_number(columns = starts_with("bill_length"), decimals = 1) |>
+  fmt_percent(ratio, decimals = 0) |>
+  gt_plt_bar_pct(ratio_bar, fill = color_base, scaled = TRUE)
+
+gtb
+```
+
+
+## `gt` + `gtExtras` {visibility="uncounted"}
+
+
+```{r}
+gtb |>
+  gt_highlight_rows(rows = 2, fill = color_base_light)
+```
+
+
+## Tricks for $\LaTeX$
+
+**Beta Distribution**
+
+<br>
+
+:::: {.columns}
+::: {.column width="60%"}
+
+```{r}
+load(here("output/quarto_academic_tips/sum_beta.rds"))
+
+gtb <- sum_beta |>
+  mutate(name = c("mean (μ<sub>0</sub>)", "median", "variance (σ<sup>2</sup>)")) |>
+  gt(rowname_col = "name") |>
+  cols_label(par_2_2 = "α = 2, β = 2", par_2_5 = "α = 2, β = 5") |>
+  fmt_markdown(columns = "name") |>
+  fmt_number(columns = starts_with("par"), decimals = 2)
+
+gtb
+```
+
+:::
+::: {.column width="40%"}
+
+```{r}
+load(here("output/quarto_academic_tips/dens_beta.rds"))
+
+p <- dens_beta |>
+  mutate(pars = recode(pars, "par_2_2" = "α = 2, β = 2", "par_2_5" = "α = 2, β = 5")) |>
+  ggplot(aes(x, dens, color = pars)) +
+  geom_line() +
+  scale_color_manual(values = c(color_base, color_accent)) +
+  labs(x = NULL, y = NULL, color = NULL) +
+  theme_quarto() +
+  theme(legend.position = c(.85, .9),
+        legend.background = element_blank())
+
+p
+```
+
+
+:::
+::::
+
+
+## Tricks for $\LaTeX$ {visibility="uncounted"}
+
+**Beta Distribution**
+
+<br>
+
+:::: {.columns}
+::: {.column width="60%"}
+
+```{r}
+gtb |>
+  gt_highlight_rows(rows = 2, fill = color_base_light)
+```
+
+:::
+::: {.column width="40%"}
+
+```{r}
+p
+```
+
+
+:::
+::::
+
+<br>
+
+```{r}
+diff_median <- sum_beta[sum_beta$name == "median",]$par_2_2 - sum_beta[sum_beta$name == "median",]$par_2_5
+```
+
+::: {.message}
+Difference in median is `r round(diff_median, 2)`!
+:::
