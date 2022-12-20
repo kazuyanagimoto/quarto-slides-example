@@ -1,0 +1,21 @@
+---
+title: "Quarto Tips for Academic Presentation"
+author: Kazuharu Yanagimoto
+date: '`r format(Sys.time(), "%B %d, %Y")`'
+execute:
+    echo: false
+    warning: false
+    message: false
+    cache: false
+format:
+  revealjs:
+    standalone: true
+    embed-resources: true
+    width: 1600
+    height: 900
+    theme: [default, custom.scss]
+    slide-number: true
+    fig-cap-location: top
+    fig-format: svg
+    pdf-separate-fragments: false
+---
