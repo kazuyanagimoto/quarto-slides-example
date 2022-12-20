@@ -23,7 +23,8 @@ $h3-font-size: 1.15em !default;
 $h4-font-size: 1em !default;
 
 // code blocks
-//$code-block-border-color: #93a1a1 !default;
+$code-block-border-color: #93a1a1 !default;
+$code-color: $presentation-heading-color;
 
 //
 // Color system
@@ -43,6 +44,40 @@ $gray-900: #002b36 !default;
 $black:    #000 !default;
 
 /*-- scss:rules --*/
+
+.title{
+    color: $white;
+    font-size: 2.5em;
+    font-family: $presentation-heading-font;
+    position: absolute;
+    top: 20%
+}
+
+.subtitle{
+    color: $gray-100;
+    font-size: $h2-font-size;
+    font-family: $presentation-heading-font;
+    position: absolute;
+    top: 33%
+}
+
+
+.author {
+    color: $white;
+    font-size: $h3-font-size;
+    font-family: $presentation-heading-font;
+    position: absolute;
+    bottom: 10%;
+}
+
+.date {
+    color: $white;
+    font-size: $h4-font-size;
+    font-family: $presentation-heading-font;
+    position: absolute;
+    bottom: 5%;
+}
+
 
 .message{
     color: $presentation-heading-color;
