@@ -10,6 +10,3 @@ RUN R -e "install.packages(c('renv', 'here', 'markdown'))"
 COPY requirements.txt .
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
-
-# Rstudio Global Options
-COPY --chown=rstudio:rstudio .config/rstudio/rstudio-prefs.json /home/rstudio/.config/rstudio/rstudio-prefs.json
