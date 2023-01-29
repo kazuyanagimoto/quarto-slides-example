@@ -44,3 +44,6 @@ vignettes/*.pdf
 # VSCODE
 .vscode/
 /.quarto/
+
+# data
+data/
