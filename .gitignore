@@ -39,7 +39,7 @@ vignettes/*.pdf
 .Renviron
 
 # Quarto html
-*_files/
+code/**/*_files/
 
 # VSCODE
 .vscode/
