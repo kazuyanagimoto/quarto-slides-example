@@ -1,0 +1,298 @@
+---
+title: 私のQuartoテーマ
+author: 柳本 和春
+date: today
+date-format: iso
+title-slide-attributes:
+    data-background-image: "https://source.unsplash.com/O8jFliG2rCI"
+execute:
+    echo: false
+    warning: false
+    message: false
+    cache: false
+format:
+  revealjs:
+    standalone: false
+    embed-resources: false
+    width: 1600
+    height: 900
+    theme: custom.scss
+    slide-number: true
+    fig-cap-location: top
+    fig-format: svg
+    pdf-separate-fragments: false
+    fig-align: center
+---
+
+# パーマー諸島のペンギン {visibility="uncounted"}
+
+```{css, echo=FALSE}
+#title-slide {
+  background-color: #ffffffbb;
+  border-radius: 10px;
+}
+
+section.has-dark-background a {
+    color: white;
+    border-style: dashed;
+    border-bottom-width: 1px;
+}
+
+section.has-dark-background a:hover {
+    color: white;
+    border-bottom: solid;
+}
+```
+
+@horst_palmer_2020
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+library(modelsummary)
+library(fixest)
+library(gt)
+library(gtExtras)
+library(gghighlight)
+library(quartomonothemer)
+library(showtext)
+```
+
+```{r}
+font_title <- "Zen Maru Gothic"
+font_text <- "Noto Sans JP"
+google_fonts <- c(font_title, font_text)
+color_base <- "#DA5019"
+color_base_light <- "#F3C0AB"
+
+gray <- "#bebebe"
+darkgray <- "#6d6d6d"
+
+font_add_google(font_title)
+font_add_google(font_text)
+showtext_auto()
+
+style_mono_quarto(
+  font_title = font_title,
+  font_text = font_text,
+  google_fonts = google_fonts,
+  color_base = color_base,
+  path_scss = here::here("code/slides/quartomonothemer/mytheme_jp/custom.scss")
+)
+
+```
+
+## クチバシの長さ
+
+```{r}
+library(palmerpenguins)
+penguins <- penguins |>
+  mutate(species = recode(species,
+      Chinstrap = "ヒゲペンギン",
+      Gentoo = "ジェンツーペンギン",
+      Adelie = "アデリーペンギン"))
+```
+
+```{r}
+penguins |>
+  group_by(species) |>
+  summarize(bill_length_mm = mean(bill_length_mm, na.rm = TRUE)) |>
+  mutate(lbl = str_c(round(bill_length_mm), "mm")) |>
+  ggplot(aes(bill_length_mm, fct_reorder(species, bill_length_mm))) +
+  geom_col(fill = color_base) +
+  geom_text(aes(label = lbl),
+            hjust = 0, nudge_x = .5,
+            size = 7, fontface = "bold", family = font_text) +
+  scale_x_continuous(expand = expansion(mult = c(0, .15))) +
+  labs(x = NULL, y = NULL) +
+  theme_quarto() +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks = element_blank()) +
+  gghighlight(species == "ヒゲペンギン")
+```
+
+## ヒレとクチバシ
+
+```{r}
+penguins |>
+  ggplot(aes(x = flipper_length_mm, y = bill_length_mm,
+             color = species, shape = species)) +
+  geom_point(size = 3) +
+  scale_color_manual(values = c(color_base, color_base_light, darkgray)) +
+  labs(x = "ヒレ (mm)", y = "クチバシ (mm)") +
+  theme_quarto() +
+  theme(legend.position = c(0.8, 0.1))
+```
+
+## クチバシの性差
+
+<br>
+
+```{r}
+gtb <- penguins |>
+  filter(!is.na(sex)) |>
+  group_by(species, sex) |>
+  summarize(bill_length = mean(bill_length_mm, na.rm = TRUE),
+            .groups = "drop") |>
+  pivot_wider(names_from = "sex", values_from = "bill_length", names_prefix = "bill_length_") |>
+  mutate(ratio_bar = 100 * bill_length_female / bill_length_male,
+         ratio = ratio_bar / 100) |>
+  gt(rowname_col = "species") |>
+  cols_label(bill_length_female = "メス", bill_length_male = "オス",
+             ratio_bar = "メス/オス", ratio = "Pct.") |>
+  fmt_number(columns = starts_with("bill_length"), decimals = 1) |>
+  fmt_percent(ratio, decimals = 0) |>
+  gt_plt_bar_pct(ratio_bar, fill = color_base, scaled = TRUE) |>
+  opt_table_font(font = google_font(name = font_text))
+
+gtb
+```
+
+## クチバシの性差 {visibilty="uncounted"}
+
+<br>
+
+```{r}
+gtb |> gt_highlight_rows(rows = 2, fill = color_base_light)
+```
+
+
+# タイタニック号生存者データ {visibility="uncounted"}
+@hendricks_titanic_2015
+
+```{r}
+library(titanic)
+titanic <- as_tibble(titanic_train) |>
+  janitor::clean_names() |>
+  rename(gender = sex, is_survived = survived) |>
+  mutate(is_survived = is_survived == 1,
+         pclass = recode_factor(pclass,
+            `1` = "一等",
+            `2` = "二等",
+            `3` = "三等"),
+         gender = recode_factor(gender,
+            male = "男性",
+            female = "女性"),
+         age_bin10 = cut(age, breaks = seq(0, 90, by = 10),
+            labels = c("<10", "10-19", "21-29", "30-39", "40-49", "50-59", "60-69", "70-79", ">80"), right = FALSE),
+         age_c = recode(age_bin10,
+                    `60-69` = ">60",
+                    `70-79` = ">60",
+                    `>80` = ">60"),
+         has_family = sib_sp + parch > 0
+         )
+```
+
+
+
+## 客室等級別生存率
+
+```{r}
+titanic |>
+  group_by(pclass, gender) |>
+  summarize(rate_survived = mean(is_survived), .groups = "drop") |>
+  ggplot(aes(x = rate_survived, y = fct_rev(pclass), fill = gender)) +
+  geom_col(position = "dodge") +
+  scale_fill_manual(values = c(gray, color_base)) +
+  labs(x = NULL, y = NULL) +
+  scale_x_continuous(labels = scales::percent) +
+  theme_quarto() +
+  theme(legend.position = c(0.9, 0.1),
+        panel.grid.major.y = element_blank())
+```
+
+## 年齢ごとの生存率
+
+```{r}
+#| fig-align: center
+sum_titanic <- titanic |>
+  filter(!is.na(age_c)) |>
+  group_by(pclass, age_c) |>
+  summarize(rate_survived = mean(is_survived), .groups = "drop")
+
+sum_titanic |>
+  ggplot(aes(x = age_c, y = rate_survived, color = pclass,
+             shape = pclass, group = pclass)) +
+  geom_point(size = 4) +
+  geom_path() +
+  scale_color_manual(values = c(color_base, color_base_light, "gray")) +
+  geom_text(data = filter(sum_titanic, age_c == ">60"),
+            aes(label = pclass, x = age_c, y = rate_survived, color = pclass),
+            hjust = -0.2,
+            family = font_text,
+            size = 5) +
+  coord_cartesian(clip = "off", expand = FALSE) +
+  labs(x = NULL, y = NULL) +
+  theme_quarto() +
+  theme(panel.grid.major.x = element_blank(),
+        legend.position = "none",
+        plot.margin = margin(30, 80, 10, 10))
+```
+
+## 生存率
+
+```{r}
+sum_titanic <- titanic |>
+  filter(!is.na(age_c)) |>
+  group_by(pclass, gender, age_c) |>
+  summarize(rate_survived = mean(is_survived), .groups = "drop")
+
+sum_titanic |>
+  mutate(lbl = str_c(round(100 * rate_survived), "%")) |>
+  ggplot(aes(x = age_c, y = fct_rev(pclass), fill = rate_survived)) +
+  geom_tile() +
+  geom_text(aes(label = lbl), color = darkgray, family = font_text) +
+  scale_fill_gradient(low = "white", high = color_base) +
+  facet_wrap(~gender) +
+  labs(x = NULL, y = NULL) +
+  theme_quarto() +
+  theme(panel.grid.major = element_blank(),
+        legend.position = "none")
+```
+
+## 生存率の回帰分析
+
+```{r}
+models <- list(
+    "(1)" = feols(is_survived ~ gender + has_family | pclass, data = titanic),
+    "(2)" = feols(is_survived ~ gender + has_family | pclass + age_c, data = titanic),
+    "(3)" = feols(is_survived ~ gender + has_family | pclass + age_c + embarked, data = titanic)
+)
+
+```
+
+```{r}
+cm  <-  c(
+    'gender女性' = "女性",
+    "has_familyTRUE" = "家族連れ"
+)
+
+gm <- tibble(
+    raw = c("FE: pclass", "FE: age_c", "FE: embarked", "nobs"),
+    clean = c("固定効果: 客室等級", "固定効果: 年齢階級", "固定効果: 乗船都市", "サンプル数"),
+    fmt = c(0, 0, 0, 0)
+)
+
+gtb <- modelsummary(models,
+  output = "gt",
+  star = TRUE,
+  coef_map = cm,
+  gof_map = gm) |>
+  opt_table_font(font = google_font(name = font_text))
+  
+gtb
+```
+
+## 生存率の回帰分析
+
+
+```{r}
+gtb |>
+  gt_highlight_rows(rows = 3, fill = color_base_light)
+```
+
+
+## 参考文献 {visibility="uncounted"}
+::: {#refs}
+:::
