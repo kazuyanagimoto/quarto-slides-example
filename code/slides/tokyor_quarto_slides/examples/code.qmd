@@ -1,0 +1,52 @@
+---
+format: revealjs
+---
+
+## Plot
+
+```{r}
+library(ggplot2)
+
+ggplot(airquality, aes(Temp, Ozone)) +
+  geom_point() +
+  geom_smooth(method = "loess")
+```
+
+## Code Display
+
+```{r}
+#| echo: true
+library(ggplot2)
+
+ggplot(airquality, aes(Temp, Ozone)) +
+  geom_point() +
+  geom_smooth(method = "loess")
+```
+
+## Column Layout
+
+```{r}
+#| echo: true
+#| output-location: column
+library(ggplot2)
+
+airquality |>
+  ggplot(aes(Temp, Ozone)) +
+    geom_point() +
+    geom_smooth(method = "loess")
+```
+
+## Code Highlight
+
+```{r}
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "7"
+library(ggplot2)
+
+airquality |>
+  ggplot(aes(Temp, Ozone)) +
+    geom_point() +
+    geom_smooth(method = "loess") +
+    theme_minimal()
+```

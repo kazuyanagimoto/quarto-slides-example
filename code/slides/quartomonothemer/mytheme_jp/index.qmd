@@ -222,6 +222,7 @@ sum_titanic |>
             hjust = -0.2,
             family = font_text,
             size = 5) +
+  scale_y_continuous(labels = scales::label_percent()) +
   coord_cartesian(clip = "off", expand = FALSE) +
   labs(x = NULL, y = NULL) +
   theme_quarto() +
