@@ -4,8 +4,7 @@ author: Kazuharu Yanagimoto
 date: 2022-03-04
 date-format: long
 title-slide-attributes:
-    data-background-image: "https://source.unsplash.com/IhWRrZx4-kk"
-    data-background-color: "#0086AB"
+    data-background-image: "img/title.png"
 execute:
     echo: false
     warning: false
@@ -26,6 +25,7 @@ format:
 ---
 
 # Introduction {visibility="hidden"}
+
 
 ```{r}
 library(tidyverse)
@@ -69,6 +69,11 @@ style_mono_quarto(
 ::: {.column width="50%"}
 
 ```{css, echo=FALSE}
+#title-slide {
+  background-color: #ffffffbb;
+  border-radius: 10px;
+}
+
 .about img {
   width: 500px;
   height: 500px;
