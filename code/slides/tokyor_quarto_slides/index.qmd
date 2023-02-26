@@ -1,10 +1,10 @@
 ---
 title: Non-designer's Quarto Presentation
 author: Kazuharu Yanagimoto
-date: 2022-03-04
+date: 2023-03-04
 date-format: long
 title-slide-attributes:
-    data-background-image: "img/title.png"
+    data-background-image: "img/title_small.png"
 execute:
     echo: false
     warning: false
