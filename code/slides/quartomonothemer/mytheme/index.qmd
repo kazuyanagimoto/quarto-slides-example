@@ -213,6 +213,7 @@ sum_titanic |>
             hjust = -0.2,
             family = font_text,
             size = 5) +
+  scale_y_continuous(labels = scales::label_percent()) +
   coord_cartesian(clip = "off", expand = FALSE) +
   labs(x = NULL, y = NULL) +
   theme_quarto() +
@@ -233,7 +234,7 @@ sum_titanic |>
   mutate(lbl = str_c(round(100 * rate_survived), "%")) |>
   ggplot(aes(x = age_c, y = fct_rev(pclass), fill = rate_survived)) +
   geom_tile() +
-  geom_text(aes(label = lbl), color = darkgray, family = font_text) +
+  geom_text(aes(label = lbl), color = "black", family = font_text) +
   scale_fill_gradient(low = "white", high = color_base) +
   facet_wrap(~gender) +
   labs(x = NULL, y = NULL) +

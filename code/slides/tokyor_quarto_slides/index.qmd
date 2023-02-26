@@ -1,0 +1,805 @@
+---
+title: Non-designer's Quarto Presentation
+author: Kazuharu Yanagimoto
+date: 2022-03-04
+date-format: long
+title-slide-attributes:
+    data-background-image: "img/title.png"
+execute:
+    echo: false
+    warning: false
+    message: false
+    cache: false
+format:
+  revealjs:
+    standalone: false
+    embed-resources: false
+    width: 1600
+    height: 900
+    theme: custom.scss
+    slide-number: true
+    fig-cap-location: top
+    fig-format: svg
+    pdf-separate-fragments: false
+    fig-align: center
+---
+
+# Introduction {visibility="hidden"}
+
+
+```{r}
+library(tidyverse)
+library(gt)
+library(gtExtras)
+library(quartomonothemer)
+library(showtext)
+```
+
+```{r}
+font_title <- "Noto Sans JP"
+font_text <- "Noto Sans JP"
+font_code <- "Fira Code"
+color_base <- "#5D639E"
+color_base_light <- "#BFC2DF"
+color_accent <- "#B75C9D"
+
+gray <- "#bebebe"
+darkgray <- "#6d6d6d"
+
+font_add_google(font_title)
+font_add_google(font_code)
+showtext_auto()
+
+style_mono_quarto(
+  font_title = font_title,
+  font_text = font_text,
+  font_code = font_code,
+  google_fonts = c(font_title, font_code, "Fraunces"),
+  color_base = color_base,
+  color_link = color_accent,
+  color_code = color_base,
+  path_scss = here::here("code/slides/tokyor_quarto_slides/custom.scss")
+)
+```
+
+---
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{css, echo=FALSE}
+#title-slide {
+  background-color: #ffffffbb;
+  border-radius: 10px;
+}
+
+.about img {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.about-name {
+  font-size: 1.6em;
+  text-align: center;
+  font-family: "Fraunces";
+}
+
+.about-sep {
+  margin: 30px;
+}
+
+.about-links {
+  font-size: 0.8em;
+  text-align: center;
+  color: white;
+}
+
+.center-x{
+    text-align: center;
+}
+
+section.has-dark-background a {
+    color: #fff;
+    border-style: dashed;
+    border-bottom-width: 1px;
+}
+
+section.has-dark-background a:hover {
+    color: #fff;
+    border-bottom: solid
+}
+```
+
+<br>
+
+::: {.about}
+![](https://kazuyanagimoto.com/static/img/profile.jpg){fig-align="center"}
+:::
+
+::: {.about-name}
+**Kazuharu Yanagimoto**
+:::
+
+```{=html}
+<hr class="about-sep">
+```
+
+::: {.about-links}
+[{{< fa link >}} Website](https://kazuyanagimoto.com)&nbsp;
+[{{< fa brands github >}} GitHub](https://github.com/kazuyanagimoto)&nbsp;
+[{{< fa brands twitter >}} Twitter](https://twitter.com/kazuyanagimotoJ)
+:::
+
+:::
+
+::: {.column width="50%"}
+
+<br>
+<br>
+
+{{< fa briefcase >}} &nbsp; **所属:** [CEMFI](https://www.cemfi.es/)経済学博士課程２年
+
+{{< fa flask >}} &nbsp; **専門:** 労働, マクロ, 家族経済学
+
+::: {style="padding-left:10%;font-size:0.9em"}
+- ジェンダーギャップ
+- 少子化
+:::
+
+{{< fa dice >}} &nbsp; **趣味:** スマブラ, スペイン語
+
+{{< fa brands r-project >}} &nbsp; Quartoにハマり, WebsiteもQuarto化
+
+
+:::
+::::
+
+## Quartoとは
+
+<br>
+
+![](img/quarto.drawio.svg)
+
+<br>
+
+- Rを使う場合 _knitr_ が動くので, ほとんどRmarkdownと変わらない
+- Rmarkdown と大きく違う点 $\Rightarrow$ Revealjs スライド
+
+## Quarto Revealjs
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{=html}
+<iframe class="slide-deck" width="800" height="450" src="https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme"></iframe>
+```
+
+[{{< fa chalkboard-user >}} HTML](https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme) &nbsp; 
+[{{< fa file-pdf >}} PDF](https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme/quartomonothemer_mytheme.pdf) &nbsp; 
+[ {{< fa brands github >}} qmd](https://github.com/kazuyanagimoto/quarto-slides-example/blob/main/code/slides/quartomonothemer/mytheme/index.qmd)
+:::
+
+::: {.column width="50%"}
+
+```{=html}
+<iframe class="slide-deck" width="800" height="450" src="https://kazuyanagimoto.com/research/working-papers/static-norm/yanagimoto-why.html"></iframe>
+```
+
+[ {{< fa chalkboard-teacher >}} HTML](https://kazuyanagimoto.com/research/working-papers/static-norm/yanagimoto-why.html) &nbsp; 
+[ {{< fa file-pdf >}} PDF](https://kazuyanagimoto.com/research/working-papers/static-norm/yanagimoto-why_slides.pdf)
+
+
+:::
+
+::::
+
+## なぜQuarto/Revealjsなのか?
+
+```{r}
+gtb <- tribble(
+  ~name,       ~design, ~speed, ~maintain, 
+  "PowerPoint",   "👩‍🎨",    "❌",       "❌", 
+  "Beamer",        "❌",    "✔️",       "✔️",
+  "Quarto",        "✔️",    "✔️",       "✔️") |>
+  gt(rowname_col = "name") |>
+  cols_label(design = "デザイン性", speed = "労力", maintain = "保守性") |>
+  cols_align(align = "center")
+
+gtb
+```
+
+<br>
+
+- PowerPointでおしゃれにするには時間がかかる. 内容変更に弱い
+- Beamerはダサい.^[個人の感想です.] デザインの自由度が低く, カスタマイズに $\LaTeX$ の知識がいる
+- Quartoはそこそこの労力でそこそこのデザインのスライドが作れる.
+
+# Quarto Revealjsの基本
+
+## スライド
+
+<br>
+
+:::: {.columns}
+::: {.column width="50%"}
+``` {.markdown}
+---
+title: "私のスライド"
+author: "柳本和春"
+format: revealjs
+---
+
+## 最初のスライド
+
+- あれ
+- これ
+
+## 二番目のスライド
+
+**これが太字**で*これが斜体*. $x = \pi$として,
+
+$$
+e^{ix} + 1 = 0
+$$
+
+```
+:::
+::: {.column width="50%"}
+```{=html}
+<iframe class="slide-deck" width="800" height="450" src="examples/markdown.html"></iframe>
+```
+:::
+::::
+
+- h2レベルのヘッダーでスライドが区切られます
+- タイトルなしのスライドは`---`で区切ります
+
+## フラグメント
+
+<br>
+
+:::: {.columns}
+::: {.column width="50%"}
+``` {.markdown}
+## インクリメンタルリスト
+
+::: {.incremental}
+- あれ
+- これ
+- それ
+:::
+
+## ポーズ
+
+まずこれを見せ
+
+. . .
+
+その後これを見せる
+```
+:::
+::: {.column width="50%"}
+```{=html}
+<iframe class="slide-deck" width="800" height="450" src="examples/incremental.html"></iframe>
+```
+:::
+::::
+
+より複雑な例はTom Mockの[この部分](https://rstudio-conf-2022.github.io/get-started-quarto/materials/05-presentations.html#/lists)のプレゼンをみるとよいと思います
+
+## コラムレイアウト
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+``` {.markdown}
+## Column Layout
+
+:::: {.columns}
+::: {.column width="50%"}
+Left column
+
+略
+:::
+
+::: {.column width="50%"}
+Right column
+
+略
+:::
+
+::::
+```
+
+:::
+
+::: {.column width="50%"}
+```{=html}
+<iframe class="slide-deck" width="800" height="450" src="examples/column.html"></iframe>
+```
+:::
+
+::::
+
+`.columns` というクラスの中で`.column` とその `width`を指定することで, 縦割りにできます.
+３つ以上の分割も可能です.
+
+
+## コード
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```` markdown
+## Plot
+
+```{{r}}
+library(ggplot2)
+
+ggplot(airquality, aes(Temp, Ozone)) +
+  geom_point() +
+  geom_smooth(method = "loess")
+```
+
+````
+:::
+
+::: {.column width="50%"}
+```{=html}
+<iframe class="slide-deck" width="800" height="450" src="examples/code.html"></iframe>
+```
+:::
+
+::::
+
+## コード: コード表示
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```` markdown
+## Code Display
+
+```{{r}}
+#| echo: true
+library(ggplot2)
+
+ggplot(airquality, aes(Temp, Ozone)) +
+  geom_point() +
+  geom_smooth(method = "loess")
+```
+````
+:::
+
+::: {.column width="50%"}
+```{=html}
+<iframe class="slide-deck" width="800" height="450" src="examples/code.html#/code-display"></iframe>
+```
+:::
+
+::::
+
+## コード: コラム表示
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```` markdown
+## Column Layout
+
+```{{r}}
+#| echo: true
+#| output-location: column
+library(ggplot2)
+
+airquality |>
+  ggplot(aes(Temp, Ozone)) +
+    geom_point() +
+    geom_smooth(method = "loess")
+```
+````
+:::
+
+::: {.column width="50%"}
+```{=html}
+<iframe class="slide-deck" width="800" height="450" src="examples/code.html#/column-layout"></iframe>
+```
+:::
+
+::::
+
+## コード: コードハイライト
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```` markdown
+## Code Highlight
+
+```{{r}}
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "7"
+library(ggplot2)
+
+airquality |>
+  ggplot(aes(Temp, Ozone)) +
+    geom_point() +
+    geom_smooth(method = "loess") +
+    theme_minimal()
+```
+````
+:::
+
+::: {.column width="50%"}
+```{=html}
+<iframe class="slide-deck" width="800" height="450" src="examples/code.html#/code-highlight"></iframe>
+```
+:::
+
+::::
+
+
+# Quarto Design Tips
+
+## Quartoのカスタムテーマ
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{.scss filename="custom.scss"}
+// fonts
+$font-family-sans-serif: Montserrat, sans-serif !default;
+$font-family-monospace: "Fira Code", monospace  !default;
+
+// colors
+$body-bg: #fff !default;
+$body-color: #272822 !default;
+$link-color: #055099 !default;
+
+// headings
+$presentation-heading-font: "Josefin Sans", sans-serif !default;
+$presentation-heading-color: #1C5253 !default;
+
+$h1-font-size: 1.6em !default;
+$h2-font-size: 1.3em !default;
+$h3-font-size: 1.15em !default;
+$h4-font-size: 1em !default;
+```
+
+:::
+
+::: {.column width="40%"}
+```{.yaml filename="slides.qmd"}
+---
+title: "Presentation"
+format:
+  revealjs: 
+    theme: [default, custom.scss]
+---
+```
+:::
+
+::::
+
+<br>
+
+SASS変数([リスト](https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables))
+をscssファイルの中で指定することで, テーマをカスタムできます
+
+## ggplot2: フォント
+
+- [サンプル](https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme)の様に, スライドの**フォント**と**色**がグラフとマッチしているとかっこいい
+- フォントは以下のように設定すると, 何度も設定しなくて済む
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**グローバル設定**
+
+```{.r}
+font_title <- "Josefin Sans"
+font_text <- "Montserrat"
+size_base <- 20
+
+theme_set(theme_minimal(
+            base_size = size_base,
+            base_family = font_text))
+theme_update(
+  plot.title = element_text(
+                size = size_base * 1.2,
+                face = "bold",
+                family = font_title),
+  panel.grid.minor = element_blank(),
+  legend.position = "bottom",
+  plot.title.position = "plot"
+)
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+**オリジナルテーマ**
+
+```{.r}
+theme_quarto <- function(
+                  font_title = "Josefin Sans",
+                  font_text = "Montserrat",
+                  size_base = 20) {
+
+  theme_minimal(base_family = font_text,
+                base_size = size_base) +
+    theme(
+      plot.title = element_text(
+                    size = size_base * 1.2,
+                    face = "bold",
+                    family = font_title),
+      panel.grid.minor = element_blank(),
+      legend.position = "bottom",
+      plot.title.position = "plot"
+    )
+}
+
+```
+
+:::
+
+::::
+
+## ggplot2: 色
+
+<br>
+
+デフォルトのカラーパレットを替えたければ, 以下のようにできます
+
+```{.r}
+scale_colour_discrete <- function(...) {
+  scale_colour_manual(values = c("#00AFBB", "#E7B800", "#FC4E07"))
+}
+
+scale_fill_discrete <- function(...) {
+  scale_fill_manual(values = c("#00AFBB", "#E7B800", "#FC4E07"))
+}
+```
+
+<br>
+
+しかし, このやり方だと例外が多く発生してしまったので, 私は基本的に
+
+- `scale_*_manual()` で毎回指定
+- `geom_point(color = color_base)` なども毎回指定しています
+
+## 70:25:5の法則
+
+![](img/rule_70255.drawio.svg)
+
+<br>
+
+メインとアクセントカラーの選び方は, [HUE/360](https://hue360.herokuapp.com/)などを参考にすればいいと思います
+
+## カラーマップ
+
+<br>
+
+```{r}
+#| layout-ncol: 2
+library(palmerpenguins)
+penguins |>
+  ggplot(aes(x = flipper_length_mm, y = bill_length_mm,
+             color = species, shape = species)) +
+  geom_point(size = 3) +
+  scale_color_manual(values = c(color_base, color_base_light, darkgray)) +
+  labs(x = "Flipper Length (mm)", y = "Bill Length (mm)") +
+  theme_quarto() +
+  theme(legend.position = c(0.9, 0.1))
+
+library(ggiplot)
+library(fixest)
+data(base_stagg)
+
+est_twfe = feols(
+    y ~ x1 + i(time_to_treatment, treated, ref = c(-1, -1000)) | id + year,
+    data = base_stagg
+    )
+
+est_sa20 = feols(
+    y ~ x1 + sunab(year_treated, year) | id + year,
+    data = base_stagg
+    )
+
+ggiplot(
+    list('TWFE' = est_twfe, 'Sun & Abraham (2020)' = est_sa20),
+    main = 'Staggered Treatment', ref.line = -1, pt.join = TRUE,
+    xlab = "Time to treatment",
+    theme = theme_quarto()) +
+  scale_color_manual(values = c(color_base, color_accent)) +
+  theme(legend.position = c(0.8, 0.1))
+```
+
+
+<a style="color:#5D639E;">ベースカラー</a>,
+<a style="color:#B75C9D">アクセントカラー</a>,
+<a style="color:#6d6d6d">グレー</a>
+とその薄色があれば大体こと足ります
+
+## `gghighlight`
+
+<br>
+
+```{r}
+#| layout-ncol: 2
+penguins |>
+  group_by(species) |>
+  summarize(bill_length_mm = mean(bill_length_mm, na.rm = TRUE)) |>
+  mutate(lbl = str_c(round(bill_length_mm), "mm")) |>
+  ggplot(aes(bill_length_mm, fct_reorder(species, bill_length_mm))) +
+  geom_col(fill = color_base) +
+  geom_text(aes(label = lbl),
+            hjust = 0, nudge_x = .5,
+            size = 7, fontface = "bold", family = font_text) +
+  scale_x_continuous(expand = expansion(mult = c(0, .15))) +
+  labs(x = NULL, y = NULL) +
+  theme_quarto() +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks = element_blank()) +
+  gghighlight::gghighlight(species == "Chinstrap")
+
+library(gapminder)
+
+gapminder |>
+  group_by(year, continent) |>
+  summarize(gdpPercap = mean(gdpPercap)) |>
+  ggplot(aes(year, gdpPercap, colour = continent)) +
+  geom_line(linewidth = 1.5) +
+  scale_y_log10() +
+  theme_quarto() +
+  scale_color_manual(values = color_base) +
+  labs(x = NULL, y = NULL, title = "GDP per Capita by Continent") +
+  theme(panel.grid.major.x = element_blank()) +
+  gghighlight::gghighlight(continent == "Asia")
+```
+
+
+- プレゼンの中で話をしたい変数の数は限られていると思います
+- すべての色付けを考えるより, `gghighlight`で色を絞りましょう
+
+## quartomonothemer
+
+<br>
+
+[kazuyanagimoto/quartomonothemer](https://github.com/kazuyanagimoto/quartomonothemer)というパッケージを作りました.
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+1. `style_mono_quarto()` を実行すると`custom.scss`が作られる
+1. `theme_quarto()` というggplot2のテーマが作られる (フォントのみ)
+1. 色は各プロット毎に指定
+:::
+
+::: {.column width="50%"}
+```{.r}
+library(showtext)
+library(quartomonothemer)
+font_title <- "Noto Sans JP"
+font_text <- "Noto Sans JP"
+font_code <- "Fira Code"
+color_base <- "#0086AB"
+
+font_add_google(font_title)
+font_add_google(font_code)
+showtext_auto()
+
+style_mono_quarto(
+  font_title = font_title,
+  font_text = font_text,
+  font_code = font_code,
+  google_fonts = c(font_title, font_code),
+  color_base = color_base
+)
+```
+:::
+
+::::
+
+## テーブル
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{=html}
+<iframe class="slide-deck" width="800" height="450" src="https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme/#/regression-of-survival-rate"></iframe>
+```
+:::
+
+::: {.column width="50%"}
+```{=html}
+<iframe class="slide-deck" width="800" height="450" src="https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme/#/bill-length-by-sex"></iframe>
+```
+:::
+
+::::
+
+Markdownや`kableExtra`もいいですが, プレゼン用では`gtExtras`が便利だと思います.
+
+- `gt`は文法が`kableExtra`より, 洗練されている
+- `gt_highlight_rows()` が簡単できれい. 色はベースカラーの薄い色がおすすめ
+
+## 細かい調整
+
+一部だけをCSSで見た目を変更したい場合は, 以下のように`style`環境で調整します.
+
+```{.markdown}
+::: {style="font-size:0.68em;"}
+少し小さくしたい部分
+:::
+```
+
+SASS変数にない部分でデザインの変更をしたい場合は, `custom.scss`に書くか, Quartoファイルにコードブロックとして書きましょう
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```` markdown
+```{{css, echo=FALSE}}
+#title-slide {
+  background-color: #ffffffbb;
+  border-radius: 10px
+}
+```
+````
+:::
+
+::: {.column width="50%"}
+```{=html}
+<iframe class="slide-deck" width="800" height="450" src="https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme_jp"></iframe>
+```
+:::
+
+::::
+
+
+## VSCode Draw.io Intergration
+
+![](img/drawio.png){fig-align="center"}
+
+ちょっとした図の挿入には[Draw.io Intergration](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio)がいいです
+
+- VSCodeであれば, Quartoと同じエディターで図を作成することができる
+- `*.drawio.svg`, `*.drawio.png`というファイル名ならエクスポートせずに図を使える
+
+
+# Enjoy! {.center .center-x background-color="#5D639E"}
+
+<br>
+
+[kazuyanagimoto/quartomonothemer](https://github.com/kazuyanagimoto/quartomonothemer)・
+[Codes for Today's Slides](https://github.com/kazuyanagimoto/quarto-slides-example)
