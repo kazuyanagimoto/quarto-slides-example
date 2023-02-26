@@ -77,6 +77,8 @@ style_mono_quarto(
   font_text = font_text,
   google_fonts = google_fonts,
   color_base = color_base,
+  color_link = color_base,
+  color_code = color_base,
   path_scss = here::here("code/slides/quartomonothemer/mytheme_jp/custom.scss")
 )
 
