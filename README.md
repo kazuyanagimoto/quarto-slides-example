@@ -18,3 +18,10 @@
 
 - [Slides (HTML)](https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme_jp), [Slides (PDF)](https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme_jp/quartomonothemer_notosansjp.pdf)
 - [Code](https://github.com/kazuyanagimoto/quarto-slides-example/blob/main/code/slides/quartomonothemer/mytheme_jp/index.qmd)
+
+## Non-designer's Quarto Presentation
+
+Presented at Tokyo.R on March 4, 2023
+
+- [Slides (HTML)](https://kazuyanagimoto.com/quarto-slides-example/code/slides/tokyor_quarto_slides)
+- [Code](https://github.com/kazuyanagimoto/quarto-slides-example/blob/main/code/slides/tokyor_quarto_slides/index.qmd)
