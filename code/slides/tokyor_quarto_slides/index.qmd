@@ -742,7 +742,7 @@ style_mono_quarto(
 
 ::: {.column width="50%"}
 ```{=html}
-<iframe class="slide-deck" width="800" height="450" src="https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme/#/bill-length-by-sex"></iframe>
+<iframe class="slide-deck" width="800" height="450" src="https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme_jp/#/%E3%82%AF%E3%83%81%E3%83%90%E3%82%B7%E3%81%AE%E6%80%A7%E5%B7%AE"></iframe>
 ```
 :::
 
