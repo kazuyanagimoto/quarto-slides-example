@@ -9,6 +9,8 @@
 
 ## Quartomonothemer
 
+Package: [kazuyanagimoto/quartomonothemer](https://kazuyanagimoto.com/quartomonothemer/)
+
 ### My Theme
 
 - [Slides (HTML)](https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme), [Slides (PDF)](https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme/quartomonothemer_mytheme.pdf)
