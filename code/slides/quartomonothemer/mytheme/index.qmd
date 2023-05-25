@@ -4,8 +4,7 @@ author: Kazuharu Yanagimoto
 date: today
 date-format: long
 title-slide-attributes:
-    data-background-image: "https://source.unsplash.com/IhWRrZx4-kk"
-    data-background-color: "#0086AB"
+    data-background-image: "https://source.unsplash.com/mjeQon0Mh_Q"
 execute:
     echo: false
     warning: false
@@ -17,7 +16,7 @@ format:
     embed-resources: false
     width: 1600
     height: 900
-    theme: custom.scss
+    theme: quartomonothemer.scss
     slide-number: true
     fig-cap-location: top
     fig-format: svg
@@ -42,26 +41,15 @@ library(quartomonothemer)
 library(showtext)
 ```
 
-```{css, echo=FALSE}
-section.has-dark-background a {
-    color: white;
-    border-style: dashed;
-    border-bottom-width: 1px;
-}
-
-section.has-dark-background a:hover {
-    color: white;
-    border-bottom: solid;
-}
-```
-
 
 ```{r}
 font_title <- "Josefin Sans"
 font_text <- "Montserrat"
-color_base <- "#0086AB"
-color_base_light <- "#97D3E3"
-
+font_sans <- "Noto Sans" 
+color_base <- "#009F8C"
+color_base_light <- "#95DFD6"
+color_accent <- "#B75C9D"
+color_accent_light <- "#DBA6CC"
 gray <- "#bebebe"
 darkgray <- "#6d6d6d"
 
@@ -72,11 +60,13 @@ showtext_auto()
 style_mono_quarto(
   font_title = font_title,
   font_text = font_text,
-  google_fonts = c(font_title, font_text),
+  font_sans = font_sans,
   color_base = color_base,
-  color_link = color_base,
+  color_accent = color_accent,
+  color_link = color_accent,
   color_code = color_base,
-  path_scss = here::here("code/slides/quartomonothemer/mytheme/custom.scss")
+  size_base = 30,
+  path_scss = here::here("code/slides/quartomonothemer/mytheme/quartomonothemer.scss")
 )
 ```
 
@@ -137,7 +127,8 @@ gtb <- penguins |>
   fmt_number(columns = starts_with("bill_length"), decimals = 1) |>
   fmt_percent(ratio, decimals = 0) |>
   gt_plt_bar_pct(ratio_bar, fill = color_base, scaled = TRUE) |>
-  opt_table_font(font = google_font(name = font_text))
+  opt_table_font(font = google_font(name = font_text)) |>
+  gt_theme_quarto()
 
 gtb
 ```
@@ -165,8 +156,8 @@ titanic <- as_tibble(titanic_train) |>
             `2` = "Second",
             `3` = "Third"),
          gender = recode_factor(gender,
-            male = "Male",
-            female = "Female"),
+            male = "Men",
+            female = "Women"),
          age_bin10 = cut(age, breaks = seq(0, 90, by = 10),
             labels = c("<10", "10-19", "21-29", "30-39", "40-49", "50-59", "60-69", "70-79", ">80"), right = FALSE),
          age_c = recode(age_bin10,
@@ -185,14 +176,16 @@ titanic <- as_tibble(titanic_train) |>
 titanic |>
   group_by(pclass, gender) |>
   summarize(rate_survived = mean(is_survived), .groups = "drop") |>
-  ggplot(aes(x = rate_survived, y = fct_rev(pclass), fill = gender)) +
+  ggplot(aes(x = rate_survived, y = fct_rev(pclass), fill = fct_rev(gender))) +
   geom_col(position = "dodge") +
-  scale_fill_manual(values = c(gray, color_base)) +
-  labs(x = NULL, y = NULL) +
   scale_x_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c(color_accent, color_base)) +
+  labs(x = NULL, y = NULL) +
   theme_quarto() +
   theme(legend.position = c(0.9, 0.1),
-        panel.grid.major.y = element_blank())
+        panel.grid.major.y = element_blank(),
+        plot.margin = margin(0, 30, 0, 0)) +
+  guides(fill = guide_legend(reverse = TRUE))
 ```
 
 ## Survival Rate by Age
@@ -234,18 +227,21 @@ sum_titanic <- titanic |>
 
 sum_titanic |>
   mutate(lbl = str_c(round(100 * rate_survived), "%")) |>
-  ggplot(aes(x = age_c, y = fct_rev(pclass), fill = rate_survived)) +
+  ggplot(aes(x = age_c, y = fct_rev(pclass), fill = gender, alpha = rate_survived)) +
   geom_tile() +
-  geom_text(aes(label = lbl), color = "black", family = font_text) +
-  scale_fill_gradient(low = "white", high = color_base) +
+  geom_text(aes(label = lbl), color = "black", family = font_text, alpha = 1) +
+  scale_fill_manual(values = c(color_base, color_accent)) +
   facet_wrap(~gender) +
   labs(x = NULL, y = NULL) +
   theme_quarto() +
   theme(panel.grid.major = element_blank(),
+        axis.text.x = element_text(size = 12),
         legend.position = "none")
 ```
 
 ## Regression of Survival Rate
+
+<br>
 
 ```{r}
 models <- list(
@@ -258,7 +254,7 @@ models <- list(
 
 ```{r}
 cm  <-  c(
-    'genderFemale' = "Female",
+    'genderWomen' = "Women",
     "has_familyTRUE" = "With Family"
 )
 
@@ -273,13 +269,25 @@ gtb <- modelsummary(models,
   star = TRUE,
   coef_map = cm,
   gof_map = gm) |>
-  opt_table_font(font = google_font(name = font_text))
+  opt_table_font(font = google_font(name = font_text)) |>
+  gt_theme_quarto()
   
 gtb
 ```
 
 ## Regression of Survival Rate
 
+<br>
+
+```{r}
+gtb |>
+  gt_highlight_rows(rows = 1, fill = color_accent_light)
+```
+
+
+## Regression of Survival Rate
+
+<br>
 
 ```{r}
 gtb |>

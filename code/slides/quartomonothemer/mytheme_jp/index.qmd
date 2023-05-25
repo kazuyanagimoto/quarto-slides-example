@@ -16,7 +16,7 @@ format:
     embed-resources: false
     width: 1600
     height: 900
-    theme: custom.scss
+    theme: quartomonothemer.scss
     slide-number: true
     fig-cap-location: top
     fig-format: svg
@@ -61,9 +61,10 @@ library(showtext)
 ```{r}
 font_title <- "Zen Maru Gothic"
 font_text <- "Noto Sans JP"
-google_fonts <- c(font_title, font_text)
 color_base <- "#DA5019"
 color_base_light <- "#F3C0AB"
+color_accent <- "#42AAC7"
+color_accent_light <- "#97D3E3"
 
 gray <- "#bebebe"
 darkgray <- "#6d6d6d"
@@ -75,11 +76,11 @@ showtext_auto()
 style_mono_quarto(
   font_title = font_title,
   font_text = font_text,
-  google_fonts = google_fonts,
   color_base = color_base,
-  color_link = color_base,
+  color_accent = color_accent,
+  color_link = color_accent,
   color_code = color_base,
-  path_scss = here::here("code/slides/quartomonothemer/mytheme_jp/custom.scss")
+  path_scss = here::here("code/slides/quartomonothemer/mytheme_jp/quartomonothemer.scss")
 )
 
 ```
@@ -146,7 +147,8 @@ gtb <- penguins |>
   fmt_number(columns = starts_with("bill_length"), decimals = 1) |>
   fmt_percent(ratio, decimals = 0) |>
   gt_plt_bar_pct(ratio_bar, fill = color_base, scaled = TRUE) |>
-  opt_table_font(font = google_font(name = font_text))
+  opt_table_font(font = google_font(name = font_text)) |>
+  gt_theme_quarto()
 
 gtb
 ```
@@ -194,14 +196,16 @@ titanic <- as_tibble(titanic_train) |>
 titanic |>
   group_by(pclass, gender) |>
   summarize(rate_survived = mean(is_survived), .groups = "drop") |>
-  ggplot(aes(x = rate_survived, y = fct_rev(pclass), fill = gender)) +
+  ggplot(aes(x = rate_survived, y = fct_rev(pclass), fill = fct_rev(gender))) +
   geom_col(position = "dodge") +
-  scale_fill_manual(values = c(gray, color_base)) +
-  labs(x = NULL, y = NULL) +
   scale_x_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c(color_base, color_accent)) +
+  labs(x = NULL, y = NULL) +
   theme_quarto() +
   theme(legend.position = c(0.9, 0.1),
-        panel.grid.major.y = element_blank())
+        panel.grid.major.y = element_blank(),
+        plot.margin = margin(0, 30, 0, 0)) +
+  guides(fill = guide_legend(reverse = TRUE))
 ```
 
 ## 年齢ごとの生存率
@@ -243,10 +247,10 @@ sum_titanic <- titanic |>
 
 sum_titanic |>
   mutate(lbl = str_c(round(100 * rate_survived), "%")) |>
-  ggplot(aes(x = age_c, y = fct_rev(pclass), fill = rate_survived)) +
+  ggplot(aes(x = age_c, y = fct_rev(pclass), fill = gender, alpha = rate_survived)) +
   geom_tile() +
-  geom_text(aes(label = lbl), color = "black", family = font_text) +
-  scale_fill_gradient(low = "white", high = color_base) +
+  geom_text(aes(label = lbl), color = "black", family = font_text, alpha = 1) +
+  scale_fill_manual(values = c(color_accent, color_base)) +
   facet_wrap(~gender) +
   labs(x = NULL, y = NULL) +
   theme_quarto() +
@@ -282,17 +286,25 @@ gtb <- modelsummary(models,
   star = TRUE,
   coef_map = cm,
   gof_map = gm) |>
-  opt_table_font(font = google_font(name = font_text))
+  opt_table_font(font = google_font(name = font_text)) |>
+  gt_theme_quarto()
   
 gtb
 ```
 
 ## 生存率の回帰分析
 
+```{r}
+gtb |>
+  gt_highlight_rows(rows = 1, fill = color_base_light)
+```
+
+
+## 生存率の回帰分析
 
 ```{r}
 gtb |>
-  gt_highlight_rows(rows = 3, fill = color_base_light)
+  gt_highlight_rows(rows = 3, fill = color_accent_light)
 ```
 
 
