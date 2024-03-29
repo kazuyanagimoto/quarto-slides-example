@@ -5,7 +5,10 @@ services:
         environment:
             - TZ=Europe/Madrid
             - DISABLE_AUTH=true
-            - RENV_PATHS_CACHE=/home/rstudio/.renv/cache
+            - PYTHONUSERBASE=/home/rstudio/.cache/pip
         volumes:
             - .:/home/rstudio/quarto-slides-example
-            - $HOME/.renv:/home/rstudio/.renv/cache
+            - cache:/home/rstudio/.cache
+volumes:
+  cache:
+    external: true

@@ -1,4 +1,10 @@
 ---
+title: Quarto Tips for Academic Presentation
+author: Kazuharu Yanagimoto
+date: 2022-12-20
+title-slide-attributes:
+  data-background-image: https://source.unsplash.com/F2KRf_QfCqw
+image: thumbnail.svg
 execute:
     echo: false
     warning: false
@@ -16,21 +22,6 @@ format:
     fig-format: svg
     pdf-separate-fragments: false
 ---
-
-## {background-image="https://source.unsplash.com/F2KRf_QfCqw" visibility="uncounted"}
-
-::: {.title}
-Quarto Tips for Academic Presentation
-:::
-
-::: {.author}
-Kazuharu Yanagimoto
-:::
-
-::: {.date}
-`r format(Sys.time(), "%B %d, %Y")`
-:::
-
 
 ```{r}
 library(here)
@@ -111,6 +102,14 @@ theme_quarto <- function (
         )
     )
 }
+
+gt_theme_quarto <- function(data, table.font.size = "0.8em", ...) {
+  data |>
+    tab_options(
+      table.font.size = table.font.size,
+      ...
+    )
+}
 ```
 
 # Figures {background-color="#1C5253" visibility="uncounted"}
@@ -176,6 +175,7 @@ load(here("output/quarto_academic_tips/bill_length_sex.rds"))
 bill_length_sex |>
   mutate(ratio = bill_length_female / bill_length_male) |>
   gt(rowname_col = "species") |>
+  gt_theme_quarto() |>
   cols_label(bill_length_female = "Female", bill_length_male = "Male", ratio = "Pct.") |>
   fmt_number(columns = starts_with("bill_length"), decimals = 1) |>
   fmt_percent(ratio, decimals = 0)
@@ -189,6 +189,7 @@ gtb <- bill_length_sex |>
   mutate(ratio = bill_length_female / bill_length_male,
          ratio_bar = ratio * 100) |>
   gt(rowname_col = "species") |>
+  gt_theme_quarto() |>
   cols_label(bill_length_female = "Female", bill_length_male = "Male", ratio_bar = "Female/Male", ratio = "Pct.") |>
   fmt_number(columns = starts_with("bill_length"), decimals = 1) |>
   fmt_percent(ratio, decimals = 0) |>
@@ -222,6 +223,7 @@ load(here("output/quarto_academic_tips/sum_beta.rds"))
 gtb <- sum_beta |>
   mutate(name = c("mean (μ<sub>0</sub>)", "median", "variance (σ<sup>2</sup>)")) |>
   gt(rowname_col = "name") |>
+  gt_theme_quarto() |>
   cols_label(par_2_2 = "α = 2, β = 2", par_2_5 = "α = 2, β = 5") |>
   fmt_markdown(columns = "name") |>
   fmt_number(columns = starts_with("par"), decimals = 2)

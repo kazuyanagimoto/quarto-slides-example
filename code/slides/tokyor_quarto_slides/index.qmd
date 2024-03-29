@@ -5,6 +5,7 @@ date: 2023-03-04
 date-format: long
 title-slide-attributes:
     data-background-image: "img/title_small.png"
+image: img/thumbnail.svg
 execute:
     echo: false
     warning: false
@@ -12,8 +13,8 @@ execute:
     cache: false
 format:
   revealjs:
-    standalone: false
-    embed-resources: false
+    standalone: true
+    embed-resources: true
     width: 1600
     height: 900
     theme: custom.scss
@@ -618,7 +619,6 @@ penguins |>
   theme_quarto() +
   theme(legend.position = c(0.9, 0.1))
 
-library(ggiplot)
 library(fixest)
 data(base_stagg)
 
@@ -632,7 +632,7 @@ est_sa20 = feols(
     data = base_stagg
     )
 
-ggiplot(
+ggfixest::ggiplot(
     list('TWFE' = est_twfe, 'Sun & Abraham (2020)' = est_sa20),
     main = 'Staggered Treatment', ref.line = -1, pt.join = TRUE,
     xlab = "Time to treatment",

@@ -1,0 +1,13 @@
+---
+title: "Some Examples for Quarto Presentation"
+listing:
+  contents:
+    - code/slides/**/index.qmd
+    - code/slides/quarto_academic_tips/slides.qmd
+  sort: "date desc"
+  type: grid
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: true
+---

@@ -1,10 +1,11 @@
 ---
 title: 私のQuartoテーマ
 author: 柳本 和春
-date: today
+date: 2023-05-25
 date-format: iso
 title-slide-attributes:
     data-background-image: "https://source.unsplash.com/O8jFliG2rCI"
+image: thumbnail.svg
 execute:
     echo: false
     warning: false

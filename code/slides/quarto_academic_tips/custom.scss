@@ -45,37 +45,43 @@ $black:    #000 !default;
 
 /*-- scss:rules --*/
 
-.title{
-    color: $white;
-    font-size: 2.5em;
-    font-family: $presentation-heading-font;
-    position: absolute;
-    top: 20%
-}
+/*-- scss:rules --*/
 
-.subtitle{
-    color: $gray-100;
-    font-size: $h2-font-size;
-    font-family: $presentation-heading-font;
-    position: absolute;
-    top: 33%
-}
+// title and headings
 
+#title-slide {
+    text-align: left;
+  
+    .title {
+      color: $white;
+      font-size: 2.5em;
+      font-family: $presentation-heading-font;
+    }
+    
+    .author,
+    .quarto-title-author-name {
+        color: $white;
+        font-size: $h3-font-size;
+        font-family: $presentation-heading-font;
+    }
 
-.author {
-    color: $white;
-    font-size: $h3-font-size;
-    font-family: $presentation-heading-font;
-    position: absolute;
-    bottom: 10%;
-}
-
-.date {
-    color: $white;
-    font-size: $h4-font-size;
-    font-family: $presentation-heading-font;
-    position: absolute;
-    bottom: 5%;
+    .quarto-title-authors {
+        display: flex;
+        justify-content: left;
+    
+        .quarto-title-author {
+          padding-left: 0em;
+          padding-right: 0em;
+          width: 100%;
+        }
+    }
+    
+    .date {
+        color: $white;
+        font-size: $h4-font-size;
+        font-family: $presentation-heading-font;
+    }
+  
 }
 
 

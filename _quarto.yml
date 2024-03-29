@@ -1,2 +1,22 @@
 project:
-  output-dir: docs
+  type: website
+  output-dir: docs/
+
+execute:
+  freeze: auto
+  warning: false
+  message: false
+
+website:
+  title: "Some Examples for Quarto Presenstation"
+  favicon: static/img/favicon.svg
+  navbar:
+    right:
+      - icon: github
+        href: https://github.com/kazuyanagimoto/quarto-slides-example
+
+format:
+  html:
+    theme:
+      - yeti
+    fig-cap-location: top
