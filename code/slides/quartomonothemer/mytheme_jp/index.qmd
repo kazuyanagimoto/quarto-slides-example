@@ -23,6 +23,7 @@ format:
     fig-format: svg
     pdf-separate-fragments: false
     fig-align: center
+bibliography: references.bib
 ---
 
 # パーマー諸島のペンギン {visibility="uncounted"}
