@@ -6,6 +6,7 @@ date-format: long
 title-slide-attributes:
     data-background-image: "img/title_small.png"
 image: img/thumbnail.svg
+description: Tokyo.R (via zoom)
 execute:
     echo: false
     warning: false
@@ -13,8 +14,8 @@ execute:
     cache: false
 format:
   revealjs:
-    standalone: true
-    embed-resources: true
+    standalone: false
+    embed-resources: false
     width: 1600
     height: 900
     theme: custom.scss
@@ -29,9 +30,8 @@ format:
 
 
 ```{r}
-library(tidyverse)
-library(gt)
-library(gtExtras)
+library(dplyr)
+library(ggplot2)
 library(quartomonothemer)
 library(showtext)
 ```
@@ -182,19 +182,19 @@ section.has-dark-background a:hover {
 <iframe class="slide-deck" width="800" height="450" src="https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme"></iframe>
 ```
 
-[{{< fa chalkboard-user >}} HTML](https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme) &nbsp; 
-[{{< fa file-pdf >}} PDF](https://kazuyanagimoto.com/quarto-slides-example/code/slides/quartomonothemer/mytheme/quartomonothemer_mytheme.pdf) &nbsp; 
-[ {{< fa brands github >}} qmd](https://github.com/kazuyanagimoto/quarto-slides-example/blob/main/code/slides/quartomonothemer/mytheme/index.qmd)
+[{{< fa chalkboard-user >}} HTML](https://kazuyanagimoto.com/quartomonothemer/vignettes/gallery.html) &nbsp; 
+[{{< fa file-pdf >}} PDF](https://kazuyanagimoto.com/quartomonothemer/vignettes/mytheme/mytheme.pdf) &nbsp; 
+[ {{< fa brands github >}} qmd](https://github.com/kazuyanagimoto/quartomonothemer/blob/main/vignettes/mytheme/index.qmd)
 :::
 
 ::: {.column width="50%"}
 
 ```{=html}
-<iframe class="slide-deck" width="800" height="450" src="https://kazuyanagimoto.com/research/working-papers/static-norm/yanagimoto-why.html"></iframe>
+<iframe class="slide-deck" width="800" height="450" src="https://kazuyanagimoto.com/research/common-cheetah/seho2023_yanagimoto.html"></iframe>
 ```
 
-[ {{< fa chalkboard-teacher >}} HTML](https://kazuyanagimoto.com/research/working-papers/static-norm/yanagimoto-why.html) &nbsp; 
-[ {{< fa file-pdf >}} PDF](https://kazuyanagimoto.com/research/working-papers/static-norm/yanagimoto-why_slides.pdf)
+[ {{< fa chalkboard-teacher >}} HTML](https://kazuyanagimoto.com/research/common-cheetah/seho2023_yanagimoto.html) &nbsp; 
+[ {{< fa file-pdf >}} PDF](https://kazuyanagimoto.com/research/common-cheetah/seho2023_yanagimoto.pdf)
 
 
 :::
@@ -203,18 +203,12 @@ section.has-dark-background a:hover {
 
 ## なぜQuarto/Revealjsなのか?
 
-```{r}
-gtb <- tribble(
-  ~name,       ~design, ~speed, ~maintain, 
-  "PowerPoint",   "👩‍🎨",    "❌",       "❌", 
-  "Beamer",        "❌",    "✔️",       "✔️",
-  "Quarto",        "✔️",    "✔️",       "✔️") |>
-  gt(rowname_col = "name") |>
-  cols_label(design = "デザイン性", speed = "労力", maintain = "保守性") |>
-  cols_align(align = "center")
+|            | デザイン性 | 労力 | 保守性 |
+|------------|-----------|------|--------|
+| Powerpoint | 👩‍🎨         | ❌    | ❌     |
+| Beamer     | ❌         | ✔️    | ✔️      |
+| Quarto     | ✔️          | ✔️    | ✔️      |
 
-gtb
-```
 
 <br>
 
@@ -654,10 +648,10 @@ ggfixest::ggiplot(
 ```{r}
 #| layout-ncol: 2
 penguins |>
-  group_by(species) |>
-  summarize(bill_length_mm = mean(bill_length_mm, na.rm = TRUE)) |>
-  mutate(lbl = str_c(round(bill_length_mm), "mm")) |>
-  ggplot(aes(bill_length_mm, fct_reorder(species, bill_length_mm))) +
+  summarize(bill_length_mm = mean(bill_length_mm, na.rm = TRUE),
+            .by = species) |>
+  mutate(lbl = paste0(round(bill_length_mm), "mm")) |>
+  ggplot(aes(bill_length_mm, forcats::fct_reorder(species, bill_length_mm))) +
   geom_col(fill = color_base) +
   geom_text(aes(label = lbl),
             hjust = 0, nudge_x = .5,

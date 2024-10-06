@@ -1,0 +1,485 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Some Examples for Quarto Presentation",
+    "section": "",
+    "text": "私のQuartoテーマ\n\n\nExample slides for quartomonothemer in Japanese\n\n\n\n柳本 和春\n\n\nMay 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMy Quarto Theme\n\n\nExample slides for quartomonothemer\n\n\n\nKazuharu Yanagimoto\n\n\nMay 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNon-designer’s Quarto Presentation\n\n\nTokyo.R (via zoom)\n\n\n\nKazuharu Yanagimoto\n\n\nMar 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto Tips for Academic Presentation\n\n\n\n\n\n\nKazuharu Yanagimoto\n\n\nDec 20, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/examples/incremental.html",
+    "href": "code/slides/tokyor_quarto_slides/examples/incremental.html",
+    "title": "Some Examples for Quarto Presenstation",
+    "section": "",
+    "text": "あれ\nこれ\nそれ"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/examples/incremental.html#インクリメンタルリスト",
+    "href": "code/slides/tokyor_quarto_slides/examples/incremental.html#インクリメンタルリスト",
+    "title": "Some Examples for Quarto Presenstation",
+    "section": "インクリメンタルリスト",
+    "text": "インクリメンタルリスト\n\n\nあれ\nこれ\nそれ"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/examples/incremental.html#ポーズ",
+    "href": "code/slides/tokyor_quarto_slides/examples/incremental.html#ポーズ",
+    "title": "Some Examples for Quarto Presenstation",
+    "section": "ポーズ",
+    "text": "ポーズ\nまずこれを見せ\n\nその後これを見せる"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/examples/code.html#code-display",
+    "href": "code/slides/tokyor_quarto_slides/examples/code.html#code-display",
+    "title": "Some Examples for Quarto Presenstation",
+    "section": "Code Display",
+    "text": "Code Display\n\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) +\n  geom_point() +\n  geom_smooth(method = \"loess\")"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/examples/code.html#column-layout",
+    "href": "code/slides/tokyor_quarto_slides/examples/code.html#column-layout",
+    "title": "Some Examples for Quarto Presenstation",
+    "section": "Column Layout",
+    "text": "Column Layout\n\n\nlibrary(ggplot2)\n\nairquality |&gt;\n  ggplot(aes(Temp, Ozone)) +\n    geom_point() +\n    geom_smooth(method = \"loess\")"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/examples/code.html#code-highlight",
+    "href": "code/slides/tokyor_quarto_slides/examples/code.html#code-highlight",
+    "title": "Some Examples for Quarto Presenstation",
+    "section": "Code Highlight",
+    "text": "Code Highlight\n\n\nlibrary(ggplot2)\n\nairquality |&gt;\n  ggplot(aes(Temp, Ozone)) +\n    geom_point() +\n    geom_smooth(method = \"loess\") +\n    theme_minimal()"
+  },
+  {
+    "objectID": "code/slides/quarto_academic_tips/slides.html#gt",
+    "href": "code/slides/quarto_academic_tips/slides.html#gt",
+    "title": "Quarto Tips for Academic Presentation",
+    "section": "gt",
+    "text": "gt\n\n\n\n\n\n\n\n\n\nFemale\nMale\nPct.\n\n\n\n\nAdelie\n37.3\n40.4\n92%\n\n\nChinstrap\n46.6\n51.1\n91%\n\n\nGentoo\n45.6\n49.5\n92%"
+  },
+  {
+    "objectID": "code/slides/quarto_academic_tips/slides.html#gt-gtextras",
+    "href": "code/slides/quarto_academic_tips/slides.html#gt-gtextras",
+    "title": "Quarto Tips for Academic Presentation",
+    "section": "gt + gtExtras",
+    "text": "gt + gtExtras\n\n\n\n\n\n\n\n\n\nFemale\nMale\nPct.\nFemale/Male\n\n\n\n\nAdelie\n37.3\n40.4\n92%\n\n\n\n\n\n\n\nChinstrap\n46.6\n51.1\n91%\n\n\n\n\n\n\n\nGentoo\n45.6\n49.5\n92%"
+  },
+  {
+    "objectID": "code/slides/quarto_academic_tips/slides.html#gt-gtextras-1",
+    "href": "code/slides/quarto_academic_tips/slides.html#gt-gtextras-1",
+    "title": "Quarto Tips for Academic Presentation",
+    "section": "gt + gtExtras",
+    "text": "gt + gtExtras\n\n\n\n\n\n\n\n\n\nFemale\nMale\nPct.\nFemale/Male\n\n\n\n\nAdelie\n37.3\n40.4\n92%\n\n\n\n\n\n\n\nChinstrap\n46.6\n51.1\n91%\n\n\n\n\n\n\n\nGentoo\n45.6\n49.5\n92%"
+  },
+  {
+    "objectID": "code/slides/quarto_academic_tips/slides.html#tricks-for-latex",
+    "href": "code/slides/quarto_academic_tips/slides.html#tricks-for-latex",
+    "title": "Quarto Tips for Academic Presentation",
+    "section": "Tricks for \\(\\LaTeX\\)",
+    "text": "Tricks for \\(\\LaTeX\\)\nBeta Distribution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nα = 2, β = 2\nα = 2, β = 5\n\n\n\n\nmean (μ0)\n0.99\n0.99\n\n\nmedian\n1.12\n0.78\n\n\nvariance (σ2)\n0.21\n0.83"
+  },
+  {
+    "objectID": "code/slides/quarto_academic_tips/slides.html#tricks-for-latex-1",
+    "href": "code/slides/quarto_academic_tips/slides.html#tricks-for-latex-1",
+    "title": "Quarto Tips for Academic Presentation",
+    "section": "Tricks for \\(\\LaTeX\\)",
+    "text": "Tricks for \\(\\LaTeX\\)\nBeta Distribution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nα = 2, β = 2\nα = 2, β = 5\n\n\n\n\nmean (μ0)\n0.99\n0.99\n\n\nmedian\n1.12\n0.78\n\n\nvariance (σ2)\n0.21\n0.83\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in median is 0.35!"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme/index.html",
+    "href": "code/slides/quartomonothemer/mytheme/index.html",
+    "title": "My Quarto Theme",
+    "section": "",
+    "text": "@horst_palmer_2020\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFemale\nMale\nFemale/Male\nPct.\n\n\n\n\nAdelie\n37.3\n40.4\n\n\n\n\n\n92%\n\n\nChinstrap\n46.6\n51.1\n\n\n\n\n\n91%\n\n\nGentoo\n45.6\n49.5\n\n\n\n\n\n92%\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFemale\nMale\nFemale/Male\nPct.\n\n\n\n\nAdelie\n37.3\n40.4\n\n\n\n\n\n92%\n\n\nChinstrap\n46.6\n51.1\n\n\n\n\n\n91%\n\n\nGentoo\n45.6\n49.5\n\n\n\n\n\n92%"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme/index.html#bill-length-by-sex",
+    "href": "code/slides/quartomonothemer/mytheme/index.html#bill-length-by-sex",
+    "title": "My Quarto Theme",
+    "section": "Bill Length by Sex",
+    "text": "Bill Length by Sex\n\n\n\n\n\n\n\n\n\n\nFemale\nMale\nFemale/Male\nPct.\n\n\n\n\nAdelie\n37.3\n40.4\n\n\n\n\n\n92%\n\n\nChinstrap\n46.6\n51.1\n\n\n\n\n\n91%\n\n\nGentoo\n45.6\n49.5\n\n\n\n\n\n92%"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme/index.html#bill-length-by-sex-1",
+    "href": "code/slides/quartomonothemer/mytheme/index.html#bill-length-by-sex-1",
+    "title": "My Quarto Theme",
+    "section": "Bill Length by Sex",
+    "text": "Bill Length by Sex\n\n\n\n\n\n\n\n\n\n\nFemale\nMale\nFemale/Male\nPct.\n\n\n\n\nAdelie\n37.3\n40.4\n\n\n\n\n\n92%\n\n\nChinstrap\n46.6\n51.1\n\n\n\n\n\n91%\n\n\nGentoo\n45.6\n49.5\n\n\n\n\n\n92%"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme/index.html#survival-rate-by-gender",
+    "href": "code/slides/quartomonothemer/mytheme/index.html#survival-rate-by-gender",
+    "title": "My Quarto Theme",
+    "section": "Survival Rate by Gender",
+    "text": "Survival Rate by Gender"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme/index.html#survival-rate-by-age",
+    "href": "code/slides/quartomonothemer/mytheme/index.html#survival-rate-by-age",
+    "title": "My Quarto Theme",
+    "section": "Survival Rate by Age",
+    "text": "Survival Rate by Age"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme/index.html#survival-rate",
+    "href": "code/slides/quartomonothemer/mytheme/index.html#survival-rate",
+    "title": "My Quarto Theme",
+    "section": "Survival Rate",
+    "text": "Survival Rate"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme/index.html#regression-of-survival-rate",
+    "href": "code/slides/quartomonothemer/mytheme/index.html#regression-of-survival-rate",
+    "title": "My Quarto Theme",
+    "section": "Regression of Survival Rate",
+    "text": "Regression of Survival Rate\n\n\n\n\n\n\n\n\n\n\n(1)\n(2)\n(3)\n\n\n\n\nWomen\n0.512*\n0.490+\n0.487+\n\n\n\n(0.108)\n(0.133)\n(0.136)\n\n\nWith Family\n0.014\n-0.043\n-0.047\n\n\n\n(0.043)\n(0.039)\n(0.043)\n\n\nFE: Class\nX\nX\nX\n\n\nFE: Age Category\n\nX\nX\n\n\nFE: City Embarked\n\n\nX\n\n\nObservations\n891\n714\n714\n\n\n\n+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme/index.html#regression-of-survival-rate-1",
+    "href": "code/slides/quartomonothemer/mytheme/index.html#regression-of-survival-rate-1",
+    "title": "My Quarto Theme",
+    "section": "Regression of Survival Rate",
+    "text": "Regression of Survival Rate\n\n\n\n\n\n\n\n\n\n\n(1)\n(2)\n(3)\n\n\n\n\nWomen\n0.512*\n0.490+\n0.487+\n\n\n\n(0.108)\n(0.133)\n(0.136)\n\n\nWith Family\n0.014\n-0.043\n-0.047\n\n\n\n(0.043)\n(0.039)\n(0.043)\n\n\nFE: Class\nX\nX\nX\n\n\nFE: Age Category\n\nX\nX\n\n\nFE: City Embarked\n\n\nX\n\n\nObservations\n891\n714\n714\n\n\n\n+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme/index.html#regression-of-survival-rate-2",
+    "href": "code/slides/quartomonothemer/mytheme/index.html#regression-of-survival-rate-2",
+    "title": "My Quarto Theme",
+    "section": "Regression of Survival Rate",
+    "text": "Regression of Survival Rate\n\n\n\n\n\n\n\n\n\n\n(1)\n(2)\n(3)\n\n\n\n\nWomen\n0.512*\n0.490+\n0.487+\n\n\n\n(0.108)\n(0.133)\n(0.136)\n\n\nWith Family\n0.014\n-0.043\n-0.047\n\n\n\n(0.043)\n(0.039)\n(0.043)\n\n\nFE: Class\nX\nX\nX\n\n\nFE: Age Category\n\nX\nX\n\n\nFE: City Embarked\n\n\nX\n\n\nObservations\n891\n714\n714\n\n\n\n+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme/index.html#references",
+    "href": "code/slides/quartomonothemer/mytheme/index.html#references",
+    "title": "My Quarto Theme",
+    "section": "References",
+    "text": "References"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme_jp/index.html",
+    "href": "code/slides/quartomonothemer/mytheme_jp/index.html",
+    "title": "私のQuartoテーマ",
+    "section": "",
+    "text": "Horst, Hill, and Gorman (2020)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nメス\nオス\nメス/オス\nPct.\n\n\n\n\nアデリーペンギン\n37.3\n40.4\n\n\n\n\n\n92%\n\n\nヒゲペンギン\n46.6\n51.1\n\n\n\n\n\n91%\n\n\nジェンツーペンギン\n45.6\n49.5\n\n\n\n\n\n92%\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nメス\nオス\nメス/オス\nPct.\n\n\n\n\nアデリーペンギン\n37.3\n40.4\n\n\n\n\n\n92%\n\n\nヒゲペンギン\n46.6\n51.1\n\n\n\n\n\n91%\n\n\nジェンツーペンギン\n45.6\n49.5\n\n\n\n\n\n92%"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme_jp/index.html#クチバシの性差",
+    "href": "code/slides/quartomonothemer/mytheme_jp/index.html#クチバシの性差",
+    "title": "私のQuartoテーマ",
+    "section": "クチバシの性差",
+    "text": "クチバシの性差\n\n\n\n\n\n\n\n\n\n\nメス\nオス\nメス/オス\nPct.\n\n\n\n\nアデリーペンギン\n37.3\n40.4\n\n\n\n\n\n92%\n\n\nヒゲペンギン\n46.6\n51.1\n\n\n\n\n\n91%\n\n\nジェンツーペンギン\n45.6\n49.5\n\n\n\n\n\n92%"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme_jp/index.html#クチバシの性差-1",
+    "href": "code/slides/quartomonothemer/mytheme_jp/index.html#クチバシの性差-1",
+    "title": "私のQuartoテーマ",
+    "section": "クチバシの性差",
+    "text": "クチバシの性差\n\n\n\n\n\n\n\n\n\n\nメス\nオス\nメス/オス\nPct.\n\n\n\n\nアデリーペンギン\n37.3\n40.4\n\n\n\n\n\n92%\n\n\nヒゲペンギン\n46.6\n51.1\n\n\n\n\n\n91%\n\n\nジェンツーペンギン\n45.6\n49.5\n\n\n\n\n\n92%"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme_jp/index.html#客室等級別生存率",
+    "href": "code/slides/quartomonothemer/mytheme_jp/index.html#客室等級別生存率",
+    "title": "私のQuartoテーマ",
+    "section": "客室等級別生存率",
+    "text": "客室等級別生存率"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme_jp/index.html#年齢ごとの生存率",
+    "href": "code/slides/quartomonothemer/mytheme_jp/index.html#年齢ごとの生存率",
+    "title": "私のQuartoテーマ",
+    "section": "年齢ごとの生存率",
+    "text": "年齢ごとの生存率"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme_jp/index.html#生存率",
+    "href": "code/slides/quartomonothemer/mytheme_jp/index.html#生存率",
+    "title": "私のQuartoテーマ",
+    "section": "生存率",
+    "text": "生存率"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme_jp/index.html#生存率の回帰分析",
+    "href": "code/slides/quartomonothemer/mytheme_jp/index.html#生存率の回帰分析",
+    "title": "私のQuartoテーマ",
+    "section": "生存率の回帰分析",
+    "text": "生存率の回帰分析\n\n\n\n\n\n\n\n\n\n(1)\n(2)\n(3)\n\n\n\n\n女性\n0.512*\n0.490+\n0.487+\n\n\n\n(0.108)\n(0.133)\n(0.136)\n\n\n家族連れ\n0.014\n-0.043\n-0.047\n\n\n\n(0.043)\n(0.039)\n(0.043)\n\n\n固定効果: 客室等級\nX\nX\nX\n\n\n固定効果: 年齢階級\n\nX\nX\n\n\n固定効果: 乗船都市\n\n\nX\n\n\nサンプル数\n891\n714\n714\n\n\n\n+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme_jp/index.html#生存率の回帰分析-1",
+    "href": "code/slides/quartomonothemer/mytheme_jp/index.html#生存率の回帰分析-1",
+    "title": "私のQuartoテーマ",
+    "section": "生存率の回帰分析",
+    "text": "生存率の回帰分析\n\n\n\n\n\n\n\n\n\n(1)\n(2)\n(3)\n\n\n\n\n女性\n0.512*\n0.490+\n0.487+\n\n\n\n(0.108)\n(0.133)\n(0.136)\n\n\n家族連れ\n0.014\n-0.043\n-0.047\n\n\n\n(0.043)\n(0.039)\n(0.043)\n\n\n固定効果: 客室等級\nX\nX\nX\n\n\n固定効果: 年齢階級\n\nX\nX\n\n\n固定効果: 乗船都市\n\n\nX\n\n\nサンプル数\n891\n714\n714\n\n\n\n+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme_jp/index.html#生存率の回帰分析-2",
+    "href": "code/slides/quartomonothemer/mytheme_jp/index.html#生存率の回帰分析-2",
+    "title": "私のQuartoテーマ",
+    "section": "生存率の回帰分析",
+    "text": "生存率の回帰分析\n\n\n\n\n\n\n\n\n\n(1)\n(2)\n(3)\n\n\n\n\n女性\n0.512*\n0.490+\n0.487+\n\n\n\n(0.108)\n(0.133)\n(0.136)\n\n\n家族連れ\n0.014\n-0.043\n-0.047\n\n\n\n(0.043)\n(0.039)\n(0.043)\n\n\n固定効果: 客室等級\nX\nX\nX\n\n\n固定効果: 年齢階級\n\nX\nX\n\n\n固定効果: 乗船都市\n\n\nX\n\n\nサンプル数\n891\n714\n714\n\n\n\n+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme_jp/index.html#参考文献",
+    "href": "code/slides/quartomonothemer/mytheme_jp/index.html#参考文献",
+    "title": "私のQuartoテーマ",
+    "section": "参考文献",
+    "text": "参考文献\n\n\nHendricks, Paul. 2015. Titanic: Titanic Passenger Survival Data Set. https://github.com/paulhendricks/titanic.\n\n\nHorst, Allison Marie, Alison Presmanes Hill, and Kristen B Gorman. 2020. Palmerpenguins: Palmer Archipelago (Antarctica) Penguin Data. https://doi.org/10.5281/zenodo.3960218."
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html",
+    "href": "code/slides/tokyor_quarto_slides/index.html",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "",
+    "text": "Kazuharu Yanagimoto\n\n\n\n Website   GitHub   Twitter\n\n\n \n   所属: CEMFI経済学博士課程２年\n   専門: 労働, マクロ, 家族経済学\n\n\nジェンダーギャップ\n少子化\n\n\n   趣味: スマブラ, スペイン語\n   Quartoにハマり, WebsiteもQuarto化\n\n\n\n\n\n\n\n\nRを使う場合 knitr が動くので, ほとんどRmarkdownと変わらない\nRmarkdown と大きく違う点 \\(\\Rightarrow\\) Revealjs スライド\n\n\n\n\n\n\n\n\n HTML    PDF    qmd\n\n\n HTML    PDF\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nデザイン性\n労力\n保守性\n\n\n\n\nPowerPoint\n👩‍🎨\n❌\n❌\n\n\nBeamer\n❌\n✔️\n✔️\n\n\nQuarto\n✔️\n✔️\n✔️\n\n\n\n\n\n\n\n\n\nPowerPointでおしゃれにするには時間がかかる. 内容変更に弱い\nBeamerはダサい.1 デザインの自由度が低く, カスタマイズに \\(\\LaTeX\\) の知識がいる\nQuartoはそこそこの労力でそこそこのデザインのスライドが作れる."
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#quartoとは",
+    "href": "code/slides/tokyor_quarto_slides/index.html#quartoとは",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "Quartoとは",
+    "text": "Quartoとは\n\n\n\n\nRを使う場合 knitr が動くので, ほとんどRmarkdownと変わらない\nRmarkdown と大きく違う点 \\(\\Rightarrow\\) Revealjs スライド"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#quarto-revealjs",
+    "href": "code/slides/tokyor_quarto_slides/index.html#quarto-revealjs",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "Quarto Revealjs",
+    "text": "Quarto Revealjs\n\n\n\n\n HTML    PDF    qmd\n\n\n HTML    PDF"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#なぜquartorevealjsなのか",
+    "href": "code/slides/tokyor_quarto_slides/index.html#なぜquartorevealjsなのか",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "なぜQuarto/Revealjsなのか?",
+    "text": "なぜQuarto/Revealjsなのか?\n\n\n\n\nデザイン性\n労力\n保守性\n\n\n\n\nPowerpoint\n👩‍🎨\n❌\n❌\n\n\nBeamer\n❌\n✔️\n✔️\n\n\nQuarto\n✔️\n✔️\n✔️\n\n\n\n\n\nPowerPointでおしゃれにするには時間がかかる. 内容変更に弱い\nBeamerはダサい.1 デザインの自由度が低く, カスタマイズに \\(\\LaTeX\\) の知識がいる\nQuartoはそこそこの労力でそこそこのデザインのスライドが作れる.\n\n個人の感想です."
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#スライド",
+    "href": "code/slides/tokyor_quarto_slides/index.html#スライド",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "スライド",
+    "text": "スライド\n\n\n\n---\ntitle: \"私のスライド\"\nauthor: \"柳本和春\"\nformat: revealjs\n---\n\n## 最初のスライド\n\n- あれ\n- これ\n\n## 二番目のスライド\n\n**これが太字**で*これが斜体*. $x = \\pi$として,\n\n$$\ne^{ix} + 1 = 0\n$$\n\n\n\n\nh2レベルのヘッダーでスライドが区切られます\nタイトルなしのスライドは---で区切ります"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#フラグメント",
+    "href": "code/slides/tokyor_quarto_slides/index.html#フラグメント",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "フラグメント",
+    "text": "フラグメント\n\n\n\n## インクリメンタルリスト\n\n::: {.incremental}\n- あれ\n- これ\n- それ\n:::\n\n## ポーズ\n\nまずこれを見せ\n\n. . .\n\nその後これを見せる\n\n\n\nより複雑な例はTom Mockのこの部分のプレゼンをみるとよいと思います"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#コラムレイアウト",
+    "href": "code/slides/tokyor_quarto_slides/index.html#コラムレイアウト",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "コラムレイアウト",
+    "text": "コラムレイアウト\n\n\n\n## Column Layout\n\n:::: {.columns}\n::: {.column width=\"50%\"}\nLeft column\n\n略\n:::\n\n::: {.column width=\"50%\"}\nRight column\n\n略\n:::\n\n::::\n\n\n\n.columns というクラスの中で.column とその widthを指定することで, 縦割りにできます. ３つ以上の分割も可能です."
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#コード",
+    "href": "code/slides/tokyor_quarto_slides/index.html#コード",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "コード",
+    "text": "コード\n\n\n\n## Plot\n\n```{r}\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) +\n  geom_point() +\n  geom_smooth(method = \"loess\")\n```"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#コード-コード表示",
+    "href": "code/slides/tokyor_quarto_slides/index.html#コード-コード表示",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "コード: コード表示",
+    "text": "コード: コード表示\n\n\n\n## Code Display\n\n```{r}\n#| echo: true\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) +\n  geom_point() +\n  geom_smooth(method = \"loess\")\n```"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#コード-コラム表示",
+    "href": "code/slides/tokyor_quarto_slides/index.html#コード-コラム表示",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "コード: コラム表示",
+    "text": "コード: コラム表示\n\n\n\n## Column Layout\n\n```{r}\n#| echo: true\n#| output-location: column\nlibrary(ggplot2)\n\nairquality |&gt;\n  ggplot(aes(Temp, Ozone)) +\n    geom_point() +\n    geom_smooth(method = \"loess\")\n```"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#コード-コードハイライト",
+    "href": "code/slides/tokyor_quarto_slides/index.html#コード-コードハイライト",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "コード: コードハイライト",
+    "text": "コード: コードハイライト\n\n\n\n## Code Highlight\n\n```{r}\n#| echo: true\n#| output-location: column\n#| code-line-numbers: \"7\"\nlibrary(ggplot2)\n\nairquality |&gt;\n  ggplot(aes(Temp, Ozone)) +\n    geom_point() +\n    geom_smooth(method = \"loess\") +\n    theme_minimal()\n```"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#quartoのカスタムテーマ",
+    "href": "code/slides/tokyor_quarto_slides/index.html#quartoのカスタムテーマ",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "Quartoのカスタムテーマ",
+    "text": "Quartoのカスタムテーマ\n\n\n\n\n\ncustom.scss\n\n// fonts\n$font-family-sans-serif: Montserrat, sans-serif !default;\n$font-family-monospace: \"Fira Code\", monospace  !default;\n\n// colors\n$body-bg: #fff !default;\n$body-color: #272822 !default;\n$link-color: #055099 !default;\n\n// headings\n$presentation-heading-font: \"Josefin Sans\", sans-serif !default;\n$presentation-heading-color: #1C5253 !default;\n\n$h1-font-size: 1.6em !default;\n$h2-font-size: 1.3em !default;\n$h3-font-size: 1.15em !default;\n$h4-font-size: 1em !default;\n\n\n\n\nslides.qmd\n\n---\ntitle: \"Presentation\"\nformat:\n  revealjs: \n    theme: [default, custom.scss]\n---\n\n\n\nSASS変数(リスト) をscssファイルの中で指定することで, テーマをカスタムできます"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#ggplot2-フォント",
+    "href": "code/slides/tokyor_quarto_slides/index.html#ggplot2-フォント",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "ggplot2: フォント",
+    "text": "ggplot2: フォント\n\nサンプルの様に, スライドのフォントと色がグラフとマッチしているとかっこいい\nフォントは以下のように設定すると, 何度も設定しなくて済む\n\n\n\nグローバル設定\nfont_title &lt;- \"Josefin Sans\"\nfont_text &lt;- \"Montserrat\"\nsize_base &lt;- 20\n\ntheme_set(theme_minimal(\n            base_size = size_base,\n            base_family = font_text))\ntheme_update(\n  plot.title = element_text(\n                size = size_base * 1.2,\n                face = \"bold\",\n                family = font_title),\n  panel.grid.minor = element_blank(),\n  legend.position = \"bottom\",\n  plot.title.position = \"plot\"\n)\n\nオリジナルテーマ\ntheme_quarto &lt;- function(\n                  font_title = \"Josefin Sans\",\n                  font_text = \"Montserrat\",\n                  size_base = 20) {\n\n  theme_minimal(base_family = font_text,\n                base_size = size_base) +\n    theme(\n      plot.title = element_text(\n                    size = size_base * 1.2,\n                    face = \"bold\",\n                    family = font_title),\n      panel.grid.minor = element_blank(),\n      legend.position = \"bottom\",\n      plot.title.position = \"plot\"\n    )\n}"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#ggplot2-色",
+    "href": "code/slides/tokyor_quarto_slides/index.html#ggplot2-色",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "ggplot2: 色",
+    "text": "ggplot2: 色\n\nデフォルトのカラーパレットを替えたければ, 以下のようにできます\nscale_colour_discrete &lt;- function(...) {\n  scale_colour_manual(values = c(\"#00AFBB\", \"#E7B800\", \"#FC4E07\"))\n}\n\nscale_fill_discrete &lt;- function(...) {\n  scale_fill_manual(values = c(\"#00AFBB\", \"#E7B800\", \"#FC4E07\"))\n}\n\nしかし, このやり方だと例外が多く発生してしまったので, 私は基本的に\n\nscale_*_manual() で毎回指定\ngeom_point(color = color_base) なども毎回指定しています"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#の法則",
+    "href": "code/slides/tokyor_quarto_slides/index.html#の法則",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "70:25:5の法則",
+    "text": "70:25:5の法則\n\n\nメインとアクセントカラーの選び方は, HUE/360などを参考にすればいいと思います"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#カラーマップ",
+    "href": "code/slides/tokyor_quarto_slides/index.html#カラーマップ",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "カラーマップ",
+    "text": "カラーマップ\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nベースカラー, アクセントカラー, グレー とその薄色があれば大体こと足ります"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#gghighlight",
+    "href": "code/slides/tokyor_quarto_slides/index.html#gghighlight",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "gghighlight",
+    "text": "gghighlight\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nプレゼンの中で話をしたい変数の数は限られていると思います\nすべての色付けを考えるより, gghighlightで色を絞りましょう"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#quartomonothemer",
+    "href": "code/slides/tokyor_quarto_slides/index.html#quartomonothemer",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "quartomonothemer",
+    "text": "quartomonothemer\n\nkazuyanagimoto/quartomonothemerというパッケージを作りました.\n\n\n\n\nstyle_mono_quarto() を実行するとcustom.scssが作られる\ntheme_quarto() というggplot2のテーマが作られる (フォントのみ)\n色は各プロット毎に指定\n\n\nlibrary(showtext)\nlibrary(quartomonothemer)\nfont_title &lt;- \"Noto Sans JP\"\nfont_text &lt;- \"Noto Sans JP\"\nfont_code &lt;- \"Fira Code\"\ncolor_base &lt;- \"#0086AB\"\n\nfont_add_google(font_title)\nfont_add_google(font_code)\nshowtext_auto()\n\nstyle_mono_quarto(\n  font_title = font_title,\n  font_text = font_text,\n  font_code = font_code,\n  google_fonts = c(font_title, font_code),\n  color_base = color_base\n)"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#テーブル",
+    "href": "code/slides/tokyor_quarto_slides/index.html#テーブル",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "テーブル",
+    "text": "テーブル\n\n\n\n\n\n\nMarkdownやkableExtraもいいですが, プレゼン用ではgtExtrasが便利だと思います.\n\ngtは文法がkableExtraより, 洗練されている\ngt_highlight_rows() が簡単できれい. 色はベースカラーの薄い色がおすすめ"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#細かい調整",
+    "href": "code/slides/tokyor_quarto_slides/index.html#細かい調整",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "細かい調整",
+    "text": "細かい調整\n一部だけをCSSで見た目を変更したい場合は, 以下のようにstyle環境で調整します.\n::: {style=\"font-size:0.68em;\"}\n少し小さくしたい部分\n:::\nSASS変数にない部分でデザインの変更をしたい場合は, custom.scssに書くか, Quartoファイルにコードブロックとして書きましょう\n\n\n```{css, echo=FALSE}\n#title-slide {\n  background-color: #ffffffbb;\n  border-radius: 10px\n}\n```"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#vscode-draw.io-intergration",
+    "href": "code/slides/tokyor_quarto_slides/index.html#vscode-draw.io-intergration",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "VSCode Draw.io Intergration",
+    "text": "VSCode Draw.io Intergration\n\nちょっとした図の挿入にはDraw.io Intergrationがいいです\n\nVSCodeであれば, Quartoと同じエディターで図を作成することができる\n*.drawio.svg, *.drawio.pngというファイル名ならエクスポートせずに図を使える"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/index.html#footnotes",
+    "href": "code/slides/tokyor_quarto_slides/index.html#footnotes",
+    "title": "Non-designer’s Quarto Presentation",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\n個人の感想です.↩︎"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/examples/markdown.html",
+    "href": "code/slides/tokyor_quarto_slides/examples/markdown.html",
+    "title": "私のスライド",
+    "section": "",
+    "text": "あれ\nこれ"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/examples/markdown.html#最初のスライド",
+    "href": "code/slides/tokyor_quarto_slides/examples/markdown.html#最初のスライド",
+    "title": "私のスライド",
+    "section": "最初のスライド",
+    "text": "最初のスライド\n\nあれ\nこれ"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/examples/markdown.html#二番目のスライド",
+    "href": "code/slides/tokyor_quarto_slides/examples/markdown.html#二番目のスライド",
+    "title": "私のスライド",
+    "section": "二番目のスライド",
+    "text": "二番目のスライド\nこれが太字でこれが斜体. \\(x = \\pi\\)として,\n\\[\ne^{ix} + 1 = 0\n\\]"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/examples/column.html",
+    "href": "code/slides/tokyor_quarto_slides/examples/column.html",
+    "title": "Some Examples for Quarto Presenstation",
+    "section": "",
+    "text": "Left column\n\nLeft 1\nLeft 2\nLeft 3\n\n\nRight column\n\nRight\nRight\nRight"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/examples/column.html#column-layout",
+    "href": "code/slides/tokyor_quarto_slides/examples/column.html#column-layout",
+    "title": "Some Examples for Quarto Presenstation",
+    "section": "Column Layout",
+    "text": "Column Layout\n\n\nLeft column\n\nLeft 1\nLeft 2\nLeft 3\n\n\nRight column\n\nRight\nRight\nRight"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/examples/column.html#つもできる",
+    "href": "code/slides/tokyor_quarto_slides/examples/column.html#つもできる",
+    "title": "Some Examples for Quarto Presenstation",
+    "section": "３つもできる",
+    "text": "３つもできる\n\n\nLeft column\n\nLeft 1\nLeft 2\nLeft 3\n\n\nMiddle column\n\nMiddle\nMiddle\nMiddle\n\n\nRight column\n\nRight\nRight\nRight"
+  },
+  {
+    "objectID": "code/slides/tokyor_quarto_slides/examples/code.html#plot",
+    "href": "code/slides/tokyor_quarto_slides/examples/code.html#plot",
+    "title": "Some Examples for Quarto Presenstation",
+    "section": "Plot",
+    "text": "Plot"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme/index.html#bill-length",
+    "href": "code/slides/quartomonothemer/mytheme/index.html#bill-length",
+    "title": "My Quarto Theme",
+    "section": "Bill Length",
+    "text": "Bill Length"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme/index.html#flipper-and-bill-length",
+    "href": "code/slides/quartomonothemer/mytheme/index.html#flipper-and-bill-length",
+    "title": "My Quarto Theme",
+    "section": "Flipper and Bill Length",
+    "text": "Flipper and Bill Length"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme_jp/index.html#クチバシの長さ",
+    "href": "code/slides/quartomonothemer/mytheme_jp/index.html#クチバシの長さ",
+    "title": "私のQuartoテーマ",
+    "section": "クチバシの長さ",
+    "text": "クチバシの長さ"
+  },
+  {
+    "objectID": "code/slides/quartomonothemer/mytheme_jp/index.html#ヒレとクチバシ",
+    "href": "code/slides/quartomonothemer/mytheme_jp/index.html#ヒレとクチバシ",
+    "title": "私のQuartoテーマ",
+    "section": "ヒレとクチバシ",
+    "text": "ヒレとクチバシ"
+  },
+  {
+    "objectID": "code/slides/quarto_academic_tips/slides.html#theme_quarto",
+    "href": "code/slides/quarto_academic_tips/slides.html#theme_quarto",
+    "title": "Quarto Tips for Academic Presentation",
+    "section": "theme_quarto()",
+    "text": "theme_quarto()"
+  },
+  {
+    "objectID": "code/slides/quarto_academic_tips/slides.html#theme_quarto-gghighlight",
+    "href": "code/slides/quarto_academic_tips/slides.html#theme_quarto-gghighlight",
+    "title": "Quarto Tips for Academic Presentation",
+    "section": "theme_quarto() + gghighlight()",
+    "text": "theme_quarto() + gghighlight()"
+  },
+  {
+    "objectID": "code/slides/quarto_academic_tips/slides.html#theme_quarto-gghighlight-1",
+    "href": "code/slides/quarto_academic_tips/slides.html#theme_quarto-gghighlight-1",
+    "title": "Quarto Tips for Academic Presentation",
+    "section": "theme_quarto() + gghighlight()",
+    "text": "theme_quarto() + gghighlight()"
+  },
+  {
+    "objectID": "code/slides/quarto_academic_tips/slides.html#theme_quarto-gghighlight-and-more",
+    "href": "code/slides/quarto_academic_tips/slides.html#theme_quarto-gghighlight-and-more",
+    "title": "Quarto Tips for Academic Presentation",
+    "section": "theme_quarto() + gghighlight() + And More!",
+    "text": "theme_quarto() + gghighlight() + And More!"
+  }
+]

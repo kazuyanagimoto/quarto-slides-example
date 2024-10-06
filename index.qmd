@@ -4,6 +4,7 @@ listing:
   contents:
     - code/slides/**/index.qmd
     - code/slides/quarto_academic_tips/slides.qmd
+    - code/slides/quartomonothemer/mytheme.yml
   sort: "date desc"
   type: grid
   sort-ui: false

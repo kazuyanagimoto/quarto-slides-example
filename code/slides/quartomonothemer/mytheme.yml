@@ -1,0 +1,15 @@
+- title: My Quarto Theme
+  author: Kazuharu Yanagimoto
+  date: 2023-05-25
+  date-format: long
+  image: https://kazuyanagimoto.com/quartomonothemer/vignettes/mytheme/thumbnail.svg
+  path: https://kazuyanagimoto.com/quartomonothemer/vignettes/mytheme/
+  url: https://kazuyanagimoto.com/quartomonothemer/vignettes/mytheme/
+  description: Example slides for [quartomonothemer](http://kazuyanagimoto.com/quartomonothemer/)
+  links:
+  - name: Code
+    url: https://github.com/kazuyanagimoto/quartomonothemer/blob/main/vignettes/mytheme/index.qmd
+    icon: fa-brands fa-github
+  - name: PDF
+    url: https://kazuyanagimoto.com/quartomonothemer/vignettes/mytheme/mytheme.pdf
+    icon: fa-solid fa-file-pdf
